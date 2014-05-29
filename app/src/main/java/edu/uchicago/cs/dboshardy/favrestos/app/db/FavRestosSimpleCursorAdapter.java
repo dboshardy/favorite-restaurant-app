@@ -13,9 +13,9 @@ import com.apress.gerber.reminders.app.R;
  * Created by Adam Gerber on 5/12/2014.
  * University of Chicago
  */
-public class RemindersSimpleCursorAdapter extends SimpleCursorAdapter {
+public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
-    public RemindersSimpleCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
+    public FavRestosSimpleCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
         super(context, layout, c, from, to, flags);
     }
 
@@ -34,8 +34,8 @@ public class RemindersSimpleCursorAdapter extends SimpleCursorAdapter {
 
             holder = new ViewHolder();
 
-            holder.colName = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.RemindersDbAdapter.KEY_CONTENT);
-            holder.colImp = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.RemindersDbAdapter.KEY_IMPORTANT);
+            holder.colName = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_CONTENT);
+            holder.colImp = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_IMPORTANT);
 
             holder.listTab =  view.findViewById(R.id.row_tab);
             holder.listText = (TextView) view.findViewById(R.id.row_text);

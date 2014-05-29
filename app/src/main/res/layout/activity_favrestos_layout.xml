@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="edu.uchicago.cs.dboshardy.favrestos.app.RemindersActivity">
+    tools:context="edu.uchicago.cs.dboshardy.favrestos.app.FavRestosActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/reminders_list_view"
+        android:id="@+id/favrestos_list_view"
        />
 
 </RelativeLayout>

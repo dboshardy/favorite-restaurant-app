@@ -25,41 +25,41 @@ import android.widget.TextView;
 
 import com.apress.gerber.reminders.app.R;
 
-import edu.uchicago.cs.dboshardy.favrestos.app.db.RemindersDbAdapter;
-import edu.uchicago.cs.dboshardy.favrestos.app.db.RemindersSimpleCursorAdapter;
+import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter;
+import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosSimpleCursorAdapter;
 
 
-public class RemindersActivity extends ActionBarActivity {
+public class FavRestosActivity extends ActionBarActivity {
 
     private ListView mListView;
-    private RemindersDbAdapter mDbAdapter;
-    private RemindersSimpleCursorAdapter mCursorAdapter;
+    private FavRestosDbAdapter mDbAdapter;
+    private FavRestosSimpleCursorAdapter mCursorAdapter;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminders_layout);
+        setContentView(R.layout.activity_favrestos_layout);
 
-        mListView = (ListView) findViewById(R.id.reminders_list_view);
+        mListView = (ListView) findViewById(R.id.favrestos_list_view);
         mListView.setDivider(null);
 
 
-        mDbAdapter = new RemindersDbAdapter(this);
+        mDbAdapter = new FavRestosDbAdapter(this);
         mDbAdapter.open();
 
         if (savedInstanceState == null) {
             //Clean all data
-            mDbAdapter.deleteAllReminders();
+            mDbAdapter.deleteAllFavRestos();
             //Add some data
-            mDbAdapter.insertSomeReminders();
+            mDbAdapter.insertSomeFavRestos();
         }
 
-        Cursor cursor = mDbAdapter.fetchAllReminders();
+        Cursor cursor = mDbAdapter.fetchAllFavRestos();
 
         //from columns defined in the db
         String[] from = new String[]{
-                RemindersDbAdapter.KEY_CONTENT
+                FavRestosDbAdapter.KEY_CONTENT
         };
 
         //to the ids of views in the layout
@@ -67,11 +67,11 @@ public class RemindersActivity extends ActionBarActivity {
                 R.id.row_text
         };
 
-        mCursorAdapter = new RemindersSimpleCursorAdapter(
+        mCursorAdapter = new FavRestosSimpleCursorAdapter(
                 //context
-                RemindersActivity.this,
+                FavRestosActivity.this,
                 //the layout of the row
-                R.layout.reminders_row,
+                R.layout.favrestos_row,
                 //cursor
                 cursor,
                 //from columns defined in the db
@@ -90,10 +90,10 @@ public class RemindersActivity extends ActionBarActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(RemindersActivity.this);
-                ListView modeList = new ListView(RemindersActivity.this);
-                String[] stringArray = new String[] { "Edit Reminder", "Delete Reminder" };
-                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(RemindersActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
+                AlertDialog.Builder builder = new AlertDialog.Builder(FavRestosActivity.this);
+                ListView modeList = new ListView(FavRestosActivity.this);
+                String[] stringArray = new String[] { "Edit FavResto", "Delete FavResto" };
+                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(FavRestosActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
                 modeList.setAdapter(modeAdapter);
                 builder.setView(modeList);
                 final Dialog dialog = builder.create();
@@ -106,14 +106,14 @@ public class RemindersActivity extends ActionBarActivity {
                         if (position == 0){
 
                             int nId = getIdFromPosition(masterListPosition);
-                            Reminder reminder = mDbAdapter.fetchReminderById(nId);
+                            FavResto reminder = mDbAdapter.fetchFavRestoById(nId);
                             fireCustomDialog(reminder);
 
                             //delete reminder
                         } else {
 
-                            mDbAdapter.deleteReminderById(getIdFromPosition(masterListPosition));
-                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllReminders());
+                            mDbAdapter.deleteFavRestoById(getIdFromPosition(masterListPosition));
+                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
 
                         }
                         dialog.dismiss();
@@ -153,12 +153,12 @@ public class RemindersActivity extends ActionBarActivity {
                             for (int nC = mCursorAdapter.getCount() - 1; nC >= 0; nC--) {
                                 if (mListView.isItemChecked(nC)) {
 
-                                    mDbAdapter.deleteReminderById(getIdFromPosition(nC));
+                                    mDbAdapter.deleteFavRestoById(getIdFromPosition(nC));
 
                                 }
                             }
                             mode.finish();
-                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllReminders());
+                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
                             return true;
 
                     }
@@ -178,13 +178,13 @@ public class RemindersActivity extends ActionBarActivity {
 
 
     private int getIdFromPosition(int nPosition){
-        Cursor cursor = mDbAdapter.fetchAllReminders();
+        Cursor cursor = mDbAdapter.fetchAllFavRestos();
         cursor.move(nPosition);
-        return cursor.getInt(RemindersDbAdapter.KEY_ID_INDEX);
+        return cursor.getInt(FavRestosDbAdapter.KEY_ID_INDEX);
     }
 
 
-    private void fireCustomDialog(final Reminder reminder){
+    private void fireCustomDialog(final FavResto reminder){
 
 
         // custom dialog
@@ -201,7 +201,7 @@ public class RemindersActivity extends ActionBarActivity {
 
         //this is for an edit
         if (reminder != null){
-            textView.setText("Edit Reminder");
+            textView.setText("Edit FavResto");
             checkBox.setChecked(reminder.getImportant() == 1);
             editCustom.setText(reminder.getContent());
             linearLayout.setBackgroundColor(getResources().getColor(R.color.blue));
@@ -214,14 +214,14 @@ public class RemindersActivity extends ActionBarActivity {
                 //this is for edit reminder
                 if (reminder != null) {
 
-                    Reminder reminderEdited = new Reminder(reminder.getId(),strCustom, checkBox.isChecked() ? 1 : 0 );
-                    mDbAdapter.updateReminder(reminderEdited);
+                    FavResto reminderEdited = new FavResto(reminder.getId(),strCustom, checkBox.isChecked() ? 1 : 0 );
+                    mDbAdapter.updateFavResto(reminderEdited);
 
                     //this is for new reminder
                 } else {
-                    mDbAdapter.createReminder( strCustom, checkBox.isChecked());
+                    mDbAdapter.createFavResto( strCustom, checkBox.isChecked());
                 }
-                mCursorAdapter.changeCursor(mDbAdapter.fetchAllReminders());
+                mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
                 dialog.dismiss();
             }
         });
@@ -253,7 +253,7 @@ public class RemindersActivity extends ActionBarActivity {
 
         switch (item.getItemId()){
             case R.id.action_new:
-                //create new Reminder
+                //create new FavResto
                 fireCustomDialog(null);
                 return true;
 

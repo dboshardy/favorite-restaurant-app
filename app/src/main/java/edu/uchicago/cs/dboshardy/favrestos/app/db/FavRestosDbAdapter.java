@@ -8,13 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import edu.uchicago.cs.dboshardy.favrestos.app.Reminder;
+import edu.uchicago.cs.dboshardy.favrestos.app.FavResto;
 
 /**
  * Created by Adam Gerber on 5/12/2014.
  * University of Chicago
  */
-public class RemindersDbAdapter {
+public class FavRestosDbAdapter {
 
     //these are the field names
     public static final String KEY_ID = "_id";
@@ -27,7 +27,7 @@ public class RemindersDbAdapter {
     public static final int KEY_IMPORTANT_INDEX = 2;
 
     //used for logging
-    private static final String TAG = "RemindersDbAdapter";
+    private static final String TAG = "FavRestosDbAdapter";
 
 
     private DatabaseHelper mDbHelper;
@@ -47,7 +47,7 @@ public class RemindersDbAdapter {
                     KEY_IMPORTANT + " INTEGER );";
 
 
-    public RemindersDbAdapter(Context ctx) {
+    public FavRestosDbAdapter(Context ctx) {
         this.mCtx = ctx;
     }
 
@@ -67,7 +67,7 @@ public class RemindersDbAdapter {
 
     //CREATE
     //note that the id will be created for you automatically
-    public void createReminder(String name, boolean important) {
+    public void createFavResto(String name, boolean important) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_CONTENT, name);
@@ -77,7 +77,7 @@ public class RemindersDbAdapter {
     }
 
     //overloaded to take a reminder
-    public long createReminder(Reminder reminder) {
+    public long createFavResto(FavResto reminder) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_CONTENT, reminder.getContent()); // Contact Name
@@ -90,7 +90,7 @@ public class RemindersDbAdapter {
 
 
     //READ
-    public Reminder fetchReminderById(int id) {
+    public FavResto fetchFavRestoById(int id) {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
                         KEY_CONTENT, KEY_IMPORTANT}, KEY_ID + "=?",
@@ -99,7 +99,7 @@ public class RemindersDbAdapter {
         if (cursor != null)
             cursor.moveToFirst();
 
-        return new Reminder(
+        return new FavResto(
                 cursor.getInt(0),
                 cursor.getString(1),
                 cursor.getInt(2)
@@ -109,7 +109,7 @@ public class RemindersDbAdapter {
 
     }
 
-    public Cursor fetchAllReminders() {
+    public Cursor fetchAllFavRestos() {
 
         Cursor mCursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
                         KEY_CONTENT, KEY_IMPORTANT},
@@ -125,7 +125,7 @@ public class RemindersDbAdapter {
 
 
     //UPDATE
-    public void updateReminder(Reminder reminder) {
+    public void updateFavResto(FavResto reminder) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_CONTENT, reminder.getContent());
@@ -138,37 +138,37 @@ public class RemindersDbAdapter {
 
 
     //DELETE
-    public void deleteReminderById(int nId) {
+    public void deleteFavRestoById(int nId) {
 
         mDb.delete(TABLE_NAME, KEY_ID + "=?", new String[]{String.valueOf(nId)});
 
     }
 
 
-    public void deleteAllReminders() {
+    public void deleteAllFavRestos() {
 
         mDb.delete(TABLE_NAME, null, null);
 
     }
 
-    public void insertSomeReminders() {
+    public void insertSomeFavRestos() {
 
 
-        createReminder("Buy Learn Android Studio by Gerber", true);
-        createReminder("Send Dad birthday gift", false);
-        createReminder("Anniversary on Friday - dinner", false);
-        createReminder("String squash racket", false);
-        createReminder("Shovel and salt walkways", false);
-        createReminder("Prepare Advanced Android syllabus", true);
-        createReminder("Buy new office chair", false);
-        createReminder("Call Auto-body shop for quote", false);
-        createReminder("Renew membership to Costco", false);
-        createReminder("Buy new Galaxy 5 Android phone", true);
-        createReminder("Sell old HTC Android phone - auction", false);
-        createReminder("Buy new paddles for kayaks", false);
-        createReminder("Call accountant about tax returns", false);
-        createReminder("Buy 300,000 shares of Google", false);
-        createReminder("Call the Dalai Lama back", true);
+        createFavResto("Buy Learn Android Studio by Gerber", true);
+        createFavResto("Send Dad birthday gift", false);
+        createFavResto("Anniversary on Friday - dinner", false);
+        createFavResto("String squash racket", false);
+        createFavResto("Shovel and salt walkways", false);
+        createFavResto("Prepare Advanced Android syllabus", true);
+        createFavResto("Buy new office chair", false);
+        createFavResto("Call Auto-body shop for quote", false);
+        createFavResto("Renew membership to Costco", false);
+        createFavResto("Buy new Galaxy 5 Android phone", true);
+        createFavResto("Sell old HTC Android phone - auction", false);
+        createFavResto("Buy new paddles for kayaks", false);
+        createFavResto("Call accountant about tax returns", false);
+        createFavResto("Buy 300,000 shares of Google", false);
+        createFavResto("Call the Dalai Lama back", true);
 
 
     }

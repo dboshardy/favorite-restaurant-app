@@ -1,14 +1,14 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
 
-public class Reminder {
+public class FavResto {
 
     private int mId;
     private String mContent;
     private int mImportant;
 
 
-    public Reminder(int id, String content, int important) {
+    public FavResto(int id, String content, int important) {
         mId = id;
         mImportant = important;
         mContent = content;
