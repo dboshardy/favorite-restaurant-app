@@ -10,10 +10,6 @@ import android.util.Log;
 
 import edu.uchicago.cs.dboshardy.favrestos.app.FavResto;
 
-/**
- * Created by Adam Gerber on 5/12/2014.
- * University of Chicago
- */
 public class FavRestosDbAdapter {
 
     //these are the field names
@@ -33,8 +29,8 @@ public class FavRestosDbAdapter {
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
 
-    private static final String DATABASE_NAME = "dba_remdr";
-    private static final String TABLE_NAME = "tbl_remdr";
+    private static final String DATABASE_NAME = "dba_favr";
+    private static final String TABLE_NAME = "tbl_favr";
     private static final int DATABASE_VERSION = 1;
 
 
@@ -100,6 +96,7 @@ public class FavRestosDbAdapter {
             cursor.moveToFirst();
 
         return new FavResto(
+                //TODO: Make sure you're pulling the right info from the database
                 cursor.getInt(0),
                 cursor.getString(1),
                 cursor.getInt(2)
@@ -154,21 +151,22 @@ public class FavRestosDbAdapter {
     public void insertSomeFavRestos() {
 
 
-        createFavResto("Buy Learn Android Studio by Gerber", true);
-        createFavResto("Send Dad birthday gift", false);
-        createFavResto("Anniversary on Friday - dinner", false);
-        createFavResto("String squash racket", false);
-        createFavResto("Shovel and salt walkways", false);
-        createFavResto("Prepare Advanced Android syllabus", true);
-        createFavResto("Buy new office chair", false);
-        createFavResto("Call Auto-body shop for quote", false);
-        createFavResto("Renew membership to Costco", false);
-        createFavResto("Buy new Galaxy 5 Android phone", true);
-        createFavResto("Sell old HTC Android phone - auction", false);
-        createFavResto("Buy new paddles for kayaks", false);
-        createFavResto("Call accountant about tax returns", false);
-        createFavResto("Buy 300,000 shares of Google", false);
-        createFavResto("Call the Dalai Lama back", true);
+
+//        createFavResto("Buy Learn Android Studio by Gerber", true);
+//        createFavResto("Send Dad birthday gift", false);
+//        createFavResto("Anniversary on Friday - dinner", false);
+//        createFavResto("String squash racket", false);
+//        createFavResto("Shovel and salt walkways", false);
+//        createFavResto("Prepare Advanced Android syllabus", true);
+//        createFavResto("Buy new office chair", false);
+//        createFavResto("Call Auto-body shop for quote", false);
+//        createFavResto("Renew membership to Costco", false);
+//        createFavResto("Buy new Galaxy 5 Android phone", true);
+//        createFavResto("Sell old HTC Android phone - auction", false);
+//        createFavResto("Buy new paddles for kayaks", false);
+//        createFavResto("Call accountant about tax returns", false);
+//        createFavResto("Buy 300,000 shares of Google", false);
+//        createFavResto("Call the Dalai Lama back", true);
 
 
     }

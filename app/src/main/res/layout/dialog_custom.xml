@@ -8,7 +8,7 @@
 
     >
     <TextView
-        android:text="New FavResto:"
+        android:text="@string/new_favresto"
         android:id="@+id/custom_title"
         android:layout_width="fill_parent"
         android:textSize="24sp"
@@ -34,7 +34,7 @@
     <CheckBox
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:text="Important"
+        android:text="@string/important"
         android:paddingLeft="32dp"
         android:textColor="@color/white"
         android:background="@color/black"
@@ -52,7 +52,7 @@
             android:layout_weight="50"
             android:layout_height="60dp"
 
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textColor="@color/white"
 
 
@@ -63,7 +63,7 @@
             android:layout_weight="50"
             android:layout_height="60dp"
 
-            android:text="Commit"
+            android:text="@string/commit"
             android:textColor="@color/white"
 
 

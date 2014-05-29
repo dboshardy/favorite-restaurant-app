@@ -4,5 +4,9 @@
     <string name="app_name">FavRestos</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="new_favresto">New Favorite Restaurant:</string>
+    <string name="important">Important</string>
+    <string name="cancel">Cancel</string>
+    <string name="commit">Commit</string>
 
 </resources>

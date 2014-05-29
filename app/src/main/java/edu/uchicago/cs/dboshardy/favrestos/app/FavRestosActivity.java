@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.apress.gerber.reminders.app.R;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter;
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosSimpleCursorAdapter;
@@ -34,6 +36,7 @@ public class FavRestosActivity extends ActionBarActivity {
     private ListView mListView;
     private FavRestosDbAdapter mDbAdapter;
     private FavRestosSimpleCursorAdapter mCursorAdapter;
+    private ShowcaseView mShowcaseView;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -44,7 +47,11 @@ public class FavRestosActivity extends ActionBarActivity {
         mListView = (ListView) findViewById(R.id.favrestos_list_view);
         mListView.setDivider(null);
 
-
+        mShowcaseView = new ShowcaseView.Builder(this)
+                //TODO: Add the viewgroups needed to show off what to do.
+                .setTarget(new ViewTarget(findViewById(R.id.button)))
+                .setOnClickListener(this)
+                .build();
         mDbAdapter = new FavRestosDbAdapter(this);
         mDbAdapter.open();
 

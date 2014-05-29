@@ -9,10 +9,6 @@ import android.widget.TextView;
 
 import com.apress.gerber.reminders.app.R;
 
-/**
- * Created by Adam Gerber on 5/12/2014.
- * University of Chicago
- */
 public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
     public FavRestosSimpleCursorAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
