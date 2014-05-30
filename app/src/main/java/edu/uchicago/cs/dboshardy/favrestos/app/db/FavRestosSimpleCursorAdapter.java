@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.apress.gerber.reminders.app.R;
+import edu.uchicago.cs.dboshardy.favrestos.app.R;
 
 public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 

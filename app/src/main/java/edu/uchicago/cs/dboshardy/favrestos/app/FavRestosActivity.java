@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.apress.gerber.reminders.app.R;
+import edu.uchicago.cs.dboshardy.favRestos.app.R;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
@@ -109,14 +109,14 @@ public class FavRestosActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        //edit reminder
+                        //edit favResto
                         if (position == 0){
 
                             int nId = getIdFromPosition(masterListPosition);
-                            FavResto reminder = mDbAdapter.fetchFavRestoById(nId);
-                            fireCustomDialog(reminder);
+                            FavResto favResto = mDbAdapter.fetchFavRestoById(nId);
+                            fireCustomDialog(favResto);
 
-                            //delete reminder
+                            //delete favResto
                         } else {
 
                             mDbAdapter.deleteFavRestoById(getIdFromPosition(masterListPosition));
@@ -156,7 +156,7 @@ public class FavRestosActivity extends ActionBarActivity {
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 
                     switch (item.getItemId()) {
-                        case R.id.menu_item_delete_reminder:
+                        case R.id.menu_item_delete_favResto:
                             for (int nC = mCursorAdapter.getCount() - 1; nC >= 0; nC--) {
                                 if (mListView.isItemChecked(nC)) {
 
@@ -191,7 +191,7 @@ public class FavRestosActivity extends ActionBarActivity {
     }
 
 
-    private void fireCustomDialog(final FavResto reminder){
+    private void fireCustomDialog(final FavResto favResto){
 
 
         // custom dialog
@@ -201,16 +201,16 @@ public class FavRestosActivity extends ActionBarActivity {
 
 
         TextView textView = (TextView) dialog.findViewById(R.id.custom_title);
-        final EditText editCustom = (EditText) dialog.findViewById(R.id.custom_edit_reminder);
+        final EditText editCustom = (EditText) dialog.findViewById(R.id.custom_edit_favResto);
         Button buttonCustom = (Button) dialog.findViewById(R.id.custom_button_commit);
         final CheckBox checkBox = (CheckBox) dialog.findViewById(R.id.custom_check_box);
         LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.custom_root_layout);
 
         //this is for an edit
-        if (reminder != null){
+        if (favResto != null){
             textView.setText("Edit FavResto");
-            checkBox.setChecked(reminder.getImportant() == 1);
-            editCustom.setText(reminder.getContent());
+            checkBox.setChecked(favResto.getFavorite() == 1);
+            editCustom.setText(favResto.getContent());
             linearLayout.setBackgroundColor(getResources().getColor(R.color.blue));
         }
 
@@ -218,13 +218,13 @@ public class FavRestosActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 String strCustom = editCustom.getText().toString();
-                //this is for edit reminder
-                if (reminder != null) {
+                //this is for edit favResto
+                if (favResto != null) {
 
-                    FavResto reminderEdited = new FavResto(reminder.getId(),strCustom, checkBox.isChecked() ? 1 : 0 );
-                    mDbAdapter.updateFavResto(reminderEdited);
+                    FavResto favRestoEdited = new FavResto(favResto.getId(),strCustom, checkBox.isChecked() ? 1 : 0 );
+                    mDbAdapter.updateFavResto(favRestoEdited);
 
-                    //this is for new reminder
+                    //this is for new favResto
                 } else {
                     mDbAdapter.createFavResto( strCustom, checkBox.isChecked());
                 }
@@ -251,7 +251,7 @@ public class FavRestosActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.reminders_menu, menu);
+        getMenuInflater().inflate(R.menu.favRestos_menu, menu);
         return true;
     }
 

@@ -26,7 +26,7 @@
         android:background="@color/light_grey"
         android:textColor="@color/black"
         android:layout_margin="4dp"
-        android:id="@+id/custom_edit_reminder">
+        android:id="@+id/custom_edit_favResto">
         <requestFocus/>
     </EditText>
 
@@ -34,7 +34,7 @@
     <CheckBox
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:text="@string/important"
+        android:text="@string/favorite"
         android:paddingLeft="32dp"
         android:textColor="@color/white"
         android:background="@color/black"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apress.gerber.reminders.app" >
+    package="edu.uchicago.cs.dboshardy.favRestos.app" >
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.uchicago.cs.dboshardy.favrestos.app.EditFavRestoActivity"
+            android:label="@string/title_activity_edit_fav_resto" >
         </activity>
     </application>
 

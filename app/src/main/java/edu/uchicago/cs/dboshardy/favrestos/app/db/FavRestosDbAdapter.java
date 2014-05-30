@@ -63,21 +63,21 @@ public class FavRestosDbAdapter {
 
     //CREATE
     //note that the id will be created for you automatically
-    public void createFavResto(String name, boolean important) {
+    public void createFavResto(String name, boolean favorite) {
 
         ContentValues values = new ContentValues();
         values.put(KEY_CONTENT, name);
-        values.put(KEY_IMPORTANT, important ? 1 : 0);
+        values.put(KEY_IMPORTANT, favorite ? 1 : 0);
         mDb.insert(TABLE_NAME, null, values);
 
     }
 
-    //overloaded to take a reminder
-    public long createFavResto(FavResto reminder) {
+    //overloaded to take a favResto
+    public long createFavResto(FavResto favResto) {
 
         ContentValues values = new ContentValues();
-        values.put(KEY_CONTENT, reminder.getContent()); // Contact Name
-        values.put(KEY_IMPORTANT, reminder.getImportant()); // Contact Phone Number
+        values.put(KEY_CONTENT, favResto.getContent()); // Contact Name
+        values.put(KEY_IMPORTANT, favResto.getFavorite()); // Contact Phone Number
 
         // Inserting Row
         return mDb.insert(TABLE_NAME, null, values);
@@ -122,14 +122,14 @@ public class FavRestosDbAdapter {
 
 
     //UPDATE
-    public void updateFavResto(FavResto reminder) {
+    public void updateFavResto(FavResto favResto) {
 
         ContentValues values = new ContentValues();
-        values.put(KEY_CONTENT, reminder.getContent());
-        values.put(KEY_IMPORTANT, reminder.getImportant());
+        values.put(KEY_CONTENT, favResto.getContent());
+        values.put(KEY_IMPORTANT, favResto.getFavorite());
 
          mDb.update(TABLE_NAME, values,
-                KEY_ID + "=?", new String[]{String.valueOf(reminder.getId())});
+                KEY_ID + "=?", new String[]{String.valueOf(favResto.getId())});
 
     }
 
