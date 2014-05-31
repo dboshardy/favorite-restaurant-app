@@ -1,5 +1,8 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +15,12 @@ import edu.uchicago.cs.dboshardy.favRestos.app.R;
 
 public class EditFavRestoActivity extends ActionBarActivity {
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_fav_resto);
-        getActionBar().setTitle("Restaurant Details:");
+        getActionBar().setTitle(getString(R.string.restaurant_details_title));
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new EditFavRestoFragment())
@@ -34,14 +38,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        //return super.onOptionsItemSelected(item);
     }
 
     /**
