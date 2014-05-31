@@ -134,8 +134,6 @@ public class FavRestosActivity extends ActionBarActivity {
 
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                    MenuInflater inflater = mode.getMenuInflater();
-                    inflater.inflate(R.menu.cam_menu, menu);
                     return true;
                 }
 
@@ -146,21 +144,6 @@ public class FavRestosActivity extends ActionBarActivity {
 
                 @Override
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-
-                    switch (item.getItemId()) {
-                        case R.id.menu_item_delete_favResto:
-                            for (int nC = mCursorAdapter.getCount() - 1; nC >= 0; nC--) {
-                                if (mListView.isItemChecked(nC)) {
-
-                                    mDbAdapter.deleteFavRestoById(getIdFromPosition(nC));
-
-                                }
-                            }
-                            mode.finish();
-                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
-                            return true;
-
-                    }
 
                     return false;
                 }
