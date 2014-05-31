@@ -1,7 +1,6 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 import edu.uchicago.cs.dboshardy.favRestos.app.R;
 
@@ -19,9 +17,10 @@ public class EditFavRestoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_fav_resto);
+        getActionBar().setTitle("Restaurant Details:");
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new EditFavRestoFragment())
                     .commit();
         }
     }
@@ -49,9 +48,10 @@ public class EditFavRestoActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class EditFavRestoFragment extends Fragment {
 
-        public PlaceholderFragment() {
+        //TODO: Add viewgroups and instantiate them
+        public EditFavRestoFragment() {
         }
 
         @Override

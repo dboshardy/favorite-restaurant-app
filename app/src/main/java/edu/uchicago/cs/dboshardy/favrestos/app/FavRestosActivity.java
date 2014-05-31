@@ -24,8 +24,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import edu.uchicago.cs.dboshardy.favRestos.app.R;
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter;
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosSimpleCursorAdapter;
@@ -36,7 +34,6 @@ public class FavRestosActivity extends ActionBarActivity {
     private ListView mListView;
     private FavRestosDbAdapter mDbAdapter;
     private FavRestosSimpleCursorAdapter mCursorAdapter;
-    private ShowcaseView mShowcaseView;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -47,11 +44,6 @@ public class FavRestosActivity extends ActionBarActivity {
         mListView = (ListView) findViewById(R.id.favrestos_list_view);
         mListView.setDivider(null);
 
-        mShowcaseView = new ShowcaseView.Builder(this)
-                //TODO: Add the viewgroups needed to show off what to do.
-                .setTarget(new ViewTarget(findViewById(R.id.button)))
-                .setOnClickListener(this)
-                .build();
         mDbAdapter = new FavRestosDbAdapter(this);
         mDbAdapter.open();
 
@@ -251,7 +243,7 @@ public class FavRestosActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.favRestos_menu, menu);
+        getMenuInflater().inflate(R.menu.fav_restos_menu, menu);
         return true;
     }
 

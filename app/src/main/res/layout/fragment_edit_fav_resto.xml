@@ -6,8 +6,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.uchicago.cs.dboshardy.favrestos.app.EditFavRestoActivity$PlaceholderFragment">
+    tools:context="edu.uchicago.cs.dboshardy.favrestos.app.EditFavRestoActivity.EditFavRestoFragment">
 
+    <!--TODO: Add layout-->
     <TextView
         android:text="@string/hello_world"
         android:layout_width="wrap_content"
