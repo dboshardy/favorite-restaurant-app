@@ -1,6 +1,7 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
 import android.annotation.TargetApi;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -19,14 +20,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import edu.uchicago.cs.dboshardy.favRestos.app.R;
 
 public class EditFavRestoActivity extends ActionBarActivity {
+    private ArrayList<Resto> mRestos;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -169,6 +174,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
 
                 } catch (Exception e) {
+                    Toast.makeText(getActivity(),"Could not fetch details from Yelp.",Toast.LENGTH_LONG);
 
                     e.printStackTrace();
                 }
@@ -185,15 +191,28 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
 
                     mJS = mJson.getJSONArray("businesses");
+                    mRestos = new ArrayList<Resto>(mJS.length());
 
                     for (int i = 0; i < mJS.length(); i++) {
                         JSONObject entry = mJS.getJSONObject(i);
-//                        mListItems.add(entry.getString("name"));
+                        String name = entry.getString("name");
+                        String url = entry.getString("mobile_url");
+                        int phone = Integer.parseInt(entry.getString("display_phone"));
+                        String image_url = entry.getString("image_url");
+                        JSONObject location = entry.getJSONObject("location");
+                        JSONObject region = entry.getJSONObject("region");
+                        JSONObject center = region.getJSONObject("center");
+                        double lat = Double.parseDouble(center.getString("latitude"));
+                        double lon = Double.parseDouble(center.getString("longitude"));
+                        String address = location.getString("address");
+                        Resto resto = new Resto(name,url,address,lat,lon,image_url,)
+                        mRestos.add();
                     }
 
 
                 } catch (JSONException e) {
                     Log.e("ERROR:", "JSON PARSING ERROR");
+                    Toast.makeText(getActivity(),"Could not parse businesses.",Toast.LENGTH_LONG);
                 }
             }
 
