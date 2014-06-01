@@ -16,8 +16,10 @@ public class Resto {
     private URL mImageUrl;
     private Image mImage;
     private int mPhoneNumber;
+    private double mRating;
 
-    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber) {
+
+    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating) {
         mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
@@ -25,6 +27,20 @@ public class Resto {
         mLongitude = longitude;
         mImageUrl = imageUrl;
         mPhoneNumber = phoneNumber;
+        mRating = rating;
+    }
+    public double getRating() {
+        return mRating;
+    }
+
+    public void setRating(double rating) {
+        mRating = rating;
+    }
+
+
+
+    public String getDisplayName(){
+        return mName + " | " + mAddress + " | " + getRatingAsASCII();
     }
 
     public String getName() {
@@ -89,6 +105,23 @@ public class Resto {
 
     public void setPhoneNumber(int phoneNumber) {
         mPhoneNumber = phoneNumber;
+    }
+
+    public String getRatingAsASCII() {
+        double rating = mRating;
+        StringBuilder builder = new StringBuilder();
+        while(rating !=0){
+            if(rating < 0){
+                builder.append(Character.toString((char)189));
+                break;
+            }
+            else {
+                builder.append("*");
+            }
+            rating--;
+        }
+
+        return builder.toString();
     }
 }
 

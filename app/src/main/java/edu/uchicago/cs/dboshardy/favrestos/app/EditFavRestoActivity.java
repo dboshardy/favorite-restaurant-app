@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -174,7 +176,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     Log.i("!!!!!", response);
                     mYelpResponse = response;
 
-
                 } catch (Exception e) {
                     Toast.makeText(getActivity(),"Could not fetch details from Yelp.",Toast.LENGTH_LONG);
 
@@ -200,6 +201,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         String name = entry.getString("name");
                         URL mobileUrl = new URL(entry.getString("mobile_url"));
                         int phone = Integer.parseInt(entry.getString("display_phone"));
+                        double rating = Double.parseDouble(entry.getString("rating"));
                         URL imageUrl = new URL(entry.getString("image_url"));
                         JSONObject location = entry.getJSONObject("location");
                         JSONObject region = entry.getJSONObject("region");
@@ -207,7 +209,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         double lat = Double.parseDouble(center.getString("latitude"));
                         double lon = Double.parseDouble(center.getString("longitude"));
                         String address = location.getString("address");
-                        Resto resto = new Resto(name,mobileUrl,address,lat,lon,imageUrl,phone);
+                        Resto resto = new Resto(name,mobileUrl,address,lat,lon,imageUrl,phone,rating);
                         mRestos.add(resto);
                     }
 
@@ -221,6 +223,23 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 }
             }
 
+        }
+        private class ImageFetchTask extends AsyncTask<String,Void,Void>{
+            private final HttpClient Client = new DefaultHttpClient();
+            private String mContent;
+            private String mErrorMessage = null;
+            //TODO: get this working
+
+            @Override
+            protected Void doInBackground(String... urls) {
+                try {
+                    URL imageUrl = new URL(urls[0]);
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
         }
     }
 }
