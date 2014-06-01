@@ -7,6 +7,7 @@ import java.net.URL;
 
 public class FavResto {
 
+    public static final String RESTO_LIST = "edu.uchicago.cs.dboshardy.restolist";
     private int mId;
     private String mContent;
     private int mFavorite;

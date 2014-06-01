@@ -17,13 +17,13 @@ public class Resto {
     private Image mImage;
     private int mPhoneNumber;
 
-    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, Image image, int phoneNumber) {
+    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber) {
         mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
         mLatitude = latitude;
         mLongitude = longitude;
-        mImage = image;
+        mImageUrl = imageUrl;
         mPhoneNumber = phoneNumber;
     }
 

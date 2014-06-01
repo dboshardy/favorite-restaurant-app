@@ -26,6 +26,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import edu.uchicago.cs.dboshardy.favRestos.app.R;
@@ -196,23 +198,26 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     for (int i = 0; i < mJS.length(); i++) {
                         JSONObject entry = mJS.getJSONObject(i);
                         String name = entry.getString("name");
-                        String url = entry.getString("mobile_url");
+                        URL mobileUrl = new URL(entry.getString("mobile_url"));
                         int phone = Integer.parseInt(entry.getString("display_phone"));
-                        String image_url = entry.getString("image_url");
+                        URL imageUrl = new URL(entry.getString("image_url"));
                         JSONObject location = entry.getJSONObject("location");
                         JSONObject region = entry.getJSONObject("region");
                         JSONObject center = region.getJSONObject("center");
                         double lat = Double.parseDouble(center.getString("latitude"));
                         double lon = Double.parseDouble(center.getString("longitude"));
                         String address = location.getString("address");
-                        Resto resto = new Resto(name,url,address,lat,lon,image_url,)
-                        mRestos.add();
+                        Resto resto = new Resto(name,mobileUrl,address,lat,lon,imageUrl,phone);
+                        mRestos.add(resto);
                     }
+
 
 
                 } catch (JSONException e) {
                     Log.e("ERROR:", "JSON PARSING ERROR");
                     Toast.makeText(getActivity(),"Could not parse businesses.",Toast.LENGTH_LONG);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
                 }
             }
 
