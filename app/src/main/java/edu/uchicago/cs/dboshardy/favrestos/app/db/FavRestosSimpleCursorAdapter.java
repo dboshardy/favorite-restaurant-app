@@ -30,21 +30,25 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
             holder = new ViewHolder();
 
-            holder.colName = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_CONTENT);
-            holder.colImp = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_IMPORTANT);
+            holder.colName = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_NAME);
+            holder.colFavorite = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_FAVORITE);
+            holder.colYelpURL = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_YELP_URL);
+            holder.colAddress = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_ADDRESS);
+            holder.colPhoneNumber = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_PHONE_NUMBER);
+            holder.colCity = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_CITY);
 
-            holder.listTab =  view.findViewById(R.id.row_tab);
+
+            holder.listTab = view.findViewById(R.id.row_tab);
             holder.listText = (TextView) view.findViewById(R.id.row_text);
 
             view.setTag(holder);
         }
 
         holder.listText.setText(cursor.getString(holder.colName));
-        if (cursor.getInt(holder.colImp) > 0)
+        if (cursor.getInt(holder.colFavorite) > 0)
             holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.orange));
         else
             holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.green));
-
 
 
     }
@@ -53,7 +57,11 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
         //store the column index
         int colName;
-        int colImp;
+        int colFavorite;
+        int colYelpURL;
+        int colAddress;
+        int colPhoneNumber;
+        int colCity;
 
         View listTab;
         TextView listText;

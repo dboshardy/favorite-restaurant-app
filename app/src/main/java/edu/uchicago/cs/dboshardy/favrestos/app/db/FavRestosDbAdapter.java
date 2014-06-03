@@ -28,6 +28,7 @@ public class FavRestosDbAdapter {
     public static final String KEY_IMAGE = "image";
     public static final String KEY_RATING = "rating";
     public static final String KEY_NOTES = "notes";
+    public static final String KEY_CITY = "city";
     //these are the corresponding indices
     public static final int KEY_ID_INDEX = 0;
     public static final int KEY_NAME_INDEX = 1;
@@ -41,6 +42,7 @@ public class FavRestosDbAdapter {
     public static final int KEY_IMAGE_INDEX = 9;
     public static final int KEY_RATING_INDEX = 10;
     public static final int KEY_NOTES_INDEX = 11;
+    public static final int KEY_CITY_INDEX = 12;
 
     //used for logging
     private static final String TAG = "FavRestosDbAdapter";
@@ -68,7 +70,8 @@ public class FavRestosDbAdapter {
                     KEY_IMAGE_URL + " TEXT, " +
                     KEY_PHONE_NUMBER + " TEXT" +
                     KEY_IMAGE + " BLOB, " +
-                    KEY_RATING + "DOUBLE);";
+                    KEY_RATING + "DOUBLE" +
+                    KEY_CITY + " TEXT);";
 
 
     public FavRestosDbAdapter(Context ctx) {
@@ -133,7 +136,7 @@ public class FavRestosDbAdapter {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
                         KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_LATITUDE, KEY_LONGITUDE, KEY_IMAGE_URL,
-                KEY_PHONE_NUMBER,KEY_IMAGE, KEY_RATING}, KEY_ID + "=?",
+                        KEY_PHONE_NUMBER, KEY_IMAGE, KEY_RATING, KEY_CITY}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null
         );
         if (cursor != null)
@@ -161,7 +164,8 @@ public class FavRestosDbAdapter {
                 //rating
                 cursor.getDouble(KEY_RATING_INDEX),
                 //notes
-                cursor.getString(KEY_NOTES_INDEX)
+                cursor.getString(KEY_NOTES_INDEX),
+                cursor.getString(KEY_CITY_INDEX)
 
         );
 
@@ -196,6 +200,7 @@ public class FavRestosDbAdapter {
         values.put(KEY_IMAGE_URL, resto.getImage());
         values.put(KEY_RATING, resto.getRating());
         values.put(KEY_NOTES, resto.getNotes());
+        values.put(KEY_CITY, resto.getCity());
 
         mDb.update(TABLE_NAME, values,
                 KEY_ID + "=?", new String[]{String.valueOf(resto.getID())});

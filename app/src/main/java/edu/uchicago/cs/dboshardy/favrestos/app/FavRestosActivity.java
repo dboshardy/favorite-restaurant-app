@@ -98,7 +98,7 @@ public class FavRestosActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }
                 Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
-                i.putExtra(FavResto.RESTO_LIST,resto);
+                i.putExtra(Resto.RESTO_LIST,resto);
                 startActivity(i);
 //                AlertDialog.Builder builder = new AlertDialog.Builder(FavRestosActivity.this);
 //                ListView modeList = new ListView(FavRestosActivity.this);
@@ -180,7 +180,7 @@ public class FavRestosActivity extends ActionBarActivity {
     private void fireCustomDialog(final Resto resto){
 
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
-        i.putExtra(FavResto.RESTO_LIST,resto);
+        i.putExtra(Resto.RESTO_LIST,resto);
         startActivity(i);
 
 

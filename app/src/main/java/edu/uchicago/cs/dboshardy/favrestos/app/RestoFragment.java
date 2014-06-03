@@ -23,7 +23,7 @@ public class RestoFragment extends DialogFragment {
     public static RestoFragment newInstance(ArrayList<Resto> restos) {
         RestoFragment fragment = new RestoFragment();
         Bundle args = new Bundle();
-        args.putSerializable(FavResto.RESTO_LIST, restos);
+        args.putSerializable(Resto.RESTO_LIST, restos);
         fragment.setArguments(args);
         return fragment;
     }
@@ -37,7 +37,7 @@ public class RestoFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        mRestos = (ArrayList<Resto>) getArguments().getSerializable(FavResto.RESTO_LIST);
+        mRestos = (ArrayList<Resto>) getArguments().getSerializable(Resto.RESTO_LIST);
         View v = getActivity().getLayoutInflater().inflate(R.layout.resto_list_fragment, null);
         mRestoList = (AbsListView) v.findViewById(R.id.resto_list);
         myAdapter = new RestoListAdapter<Resto>(mRestos);

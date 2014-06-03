@@ -7,6 +7,7 @@ import java.net.URL;
  * Created by drew on 6/1/14.
  */
 public class Resto implements Serializable {
+    public static final String RESTO_LIST = "edu.uchicago.cs.dboshardy.favrestos.app.resto_list";
     private int mID;
     private String mName;
     private URL mYelpURL;
@@ -19,10 +20,18 @@ public class Resto implements Serializable {
     private double mRating;
     private int mFavorite;
     private String mNotes;
+    private String mCity;
 
+    public String getCity() {
+        return mCity;
+    }
+
+    public void setCity(String city) {
+        mCity = city;
+    }
 
     //full constructor
-    public Resto(int id, String name, int favorite, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating, String notes) {
+    public Resto(int id, String name, int favorite, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating, String notes, String city) {
         mID = id;
         mName = name;
         mFavorite = favorite;
@@ -34,9 +43,10 @@ public class Resto implements Serializable {
         mPhoneNumber = phoneNumber;
         mRating = rating;
         mNotes = notes;
+        mCity = city;
     }
     //overloaded to remove favorite
-    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating) { mName = name;
+    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating, String city) { mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
         mLatitude = latitude;
@@ -44,6 +54,7 @@ public class Resto implements Serializable {
         mImageUrl = imageUrl;
         mPhoneNumber = phoneNumber;
         mRating = rating;
+        mCity = city;
         setFavorite(0);
     }
 
