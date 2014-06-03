@@ -1,23 +1,17 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-
-import edu.uchicago.cs.dboshardy.favrestos.app.dummy.DummyContent;
 
 public class RestoFragment extends DialogFragment {
 
@@ -44,7 +38,7 @@ public class RestoFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         mRestos = (ArrayList<Resto>) getArguments().getSerializable(FavResto.RESTO_LIST);
-        View v = getActivity().getLayoutInflater().inflate(R.layout.resto_list_fragment,null);
+        View v = getActivity().getLayoutInflater().inflate(R.layout.resto_list_fragment, null);
         mRestoList = (AbsListView) v.findViewById(R.id.resto_list);
         myAdapter = new RestoListAdapter<Resto>(mRestos);
         mRestoList.setAdapter(myAdapter);
@@ -55,11 +49,11 @@ public class RestoFragment extends DialogFragment {
     }
 
 
-    private class RestoListAdapter<Resto> extends ArrayAdapter<Resto>{
+    private class RestoListAdapter<Resto> extends ArrayAdapter<Resto> {
         private final ArrayList<Resto> mRestos;
 
-        public RestoListAdapter(ArrayList<Resto> restos){
-            super(getActivity(),android.R.layout.simple_list_item_1, (java.util.List<Resto>) restos);
+        public RestoListAdapter(ArrayList<Resto> restos) {
+            super(getActivity(), android.R.layout.simple_list_item_1, (java.util.List<Resto>) restos);
             mRestos = restos;
         }
 
@@ -71,10 +65,11 @@ public class RestoFragment extends DialogFragment {
                         .inflate(R.layout.resto_list_item, null);
             }
 
+
             final Resto resto = getItem(position);
 
             final TextView textView = (TextView) convertView.findViewById(R.id.resto_list_item);
-            textView.setText((CharSequence) resto.getDisplayName());
+           // textView.setText((CharSequence) resto.getDisplayName());
             textView.setOnClickListener(new View.OnClickListener() {
                 //TODO: Define what happens on click
                 @Override
@@ -87,9 +82,11 @@ public class RestoFragment extends DialogFragment {
 
             return convertView;
         }
+
         public void sendResult() {
             Intent i = new Intent();
             getTargetFragment().onActivityResult(getTargetRequestCode(), 0, i);
         }
 
+    }
 }

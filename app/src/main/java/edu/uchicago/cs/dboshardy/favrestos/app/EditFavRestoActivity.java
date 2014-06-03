@@ -32,7 +32,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import edu.uchicago.cs.dboshardy.favRestos.app.R;
 
 public class EditFavRestoActivity extends ActionBarActivity {
     private ArrayList<Resto> mRestos;
