@@ -130,7 +130,21 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 }
             });
             mCancelButton = (Button) rootView.findViewById(R.id.cancel_button);
+            mCancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
             mUpdateButton = (Button) rootView.findViewById(R.id.update_button);
+            mUpdateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //TODO: Update database and finish();
+                    finish();
+                }
+            });
             mFetchButton = (Button) rootView.findViewById(R.id.fetch_button);
             mFetchButton.setOnClickListener(new View.OnClickListener() {
                 @Override

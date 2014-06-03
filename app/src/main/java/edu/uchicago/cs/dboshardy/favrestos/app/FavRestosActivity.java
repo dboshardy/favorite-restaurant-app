@@ -25,6 +25,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import java.net.MalformedURLException;
+
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter;
 import edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosSimpleCursorAdapter;
 
@@ -51,14 +53,13 @@ public class FavRestosActivity extends ActionBarActivity {
             //Clean all data
             mDbAdapter.deleteAllFavRestos();
             //Add some data
-            mDbAdapter.insertSomeFavRestos();
         }
 
         Cursor cursor = mDbAdapter.fetchAllFavRestos();
 
         //from columns defined in the db
         String[] from = new String[]{
-                FavRestosDbAdapter.KEY_CONTENT
+                FavRestosDbAdapter.KEY_NAME
         };
 
         //to the ids of views in the layout
@@ -90,7 +91,12 @@ public class FavRestosActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
                             int nId = getIdFromPosition(masterListPosition);
-                            Resto resto = mDbAdapter.fetchFavRestoById(nId);
+                Resto resto = null;
+                try {
+                    resto = mDbAdapter.fetchFavRestoById(nId);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
                 Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
                 i.putExtra(FavResto.RESTO_LIST,resto);
                 startActivity(i);
