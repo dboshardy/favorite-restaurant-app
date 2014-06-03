@@ -62,6 +62,7 @@ public class FavRestosDbAdapter {
                     KEY_NAME + " TEXT, " +
                     KEY_FAVORITE + " INTEGER," +
                     KEY_YELP_URL + " TEXT, " +
+                    KEY_ADDRESS + " TEXT, " +
                     KEY_LATITUDE + "  DOUBLE, " +
                     KEY_LONGITUDE + " DOUBLE, " +
                     KEY_IMAGE_URL + " TEXT, " +
@@ -90,22 +91,22 @@ public class FavRestosDbAdapter {
 
     //CREATE
     //note that the id will be created for you automatically
-    public void createFavResto(Resto resto) {
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_NAME, resto.getName());
-        values.put(KEY_FAVORITE, resto.getFavorite());
-        values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
-        values.put(KEY_LATITUDE, resto.getLatitude());
-        values.put(KEY_LONGITUDE, resto.getLongitude());
-        values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
-        values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
-        values.put(KEY_IMAGE_URL, resto.getImage());
-        values.put(KEY_RATING, resto.getRating());
-
-        mDb.insert(TABLE_NAME, null, values);
-
-    }
+//    public void createFavResto(Resto resto) {
+//
+//        ContentValues values = new ContentValues();
+//        values.put(KEY_NAME, resto.getName());
+//        values.put(KEY_FAVORITE, resto.getFavorite());
+//        values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
+//        values.put(KEY_LATITUDE, resto.getLatitude());
+//        values.put(KEY_LONGITUDE, resto.getLongitude());
+//        values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
+//        values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
+//        values.put(KEY_IMAGE_URL, resto.getImage());
+//        values.put(KEY_RATING, resto.getRating());
+//
+//        mDb.insert(TABLE_NAME, null, values);
+//
+//    }
 
     //overloaded to take a Resto
     public long createFavResto(Resto resto) {
@@ -131,7 +132,7 @@ public class FavRestosDbAdapter {
     public Resto fetchFavRestoById(int id) throws MalformedURLException {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
-                        KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_LATITUDE, KEY_LONGITUDE, KEY_IMAGE_URL,
+                        KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_LATITUDE, KEY_LONGITUDE, KEY_IMAGE_URL,
                 KEY_PHONE_NUMBER,KEY_IMAGE, KEY_RATING}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null
         );
@@ -190,7 +191,7 @@ public class FavRestosDbAdapter {
         values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
         values.put(KEY_LATITUDE, resto.getLatitude());
         values.put(KEY_LONGITUDE, resto.getLongitude());
-        values.put(KEY_IMAGE_URL, resto.getImageUrl());
+        values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
         values.put(KEY_IMAGE_URL, resto.getImage());
         values.put(KEY_RATING, resto.getRating());
