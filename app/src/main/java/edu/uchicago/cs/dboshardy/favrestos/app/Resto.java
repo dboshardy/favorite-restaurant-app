@@ -8,12 +8,11 @@ import java.net.URL;
  */
 public class Resto implements Serializable {
     public static final String RESTO_LIST = "edu.uchicago.cs.dboshardy.favrestos.app.resto_list";
+    public static final String RESTO = "edu.uchicago.cs.dboshardy.favrestos.app.resto_to_deal_with";
     private int mID;
     private String mName;
     private URL mYelpURL;
     private String mAddress;
-    private double mLatitude;
-    private double mLongitude;
     private URL mImageUrl;
     private byte[] mImage;
     private String mPhoneNumber;
@@ -31,14 +30,12 @@ public class Resto implements Serializable {
     }
 
     //full constructor
-    public Resto(int id, String name, int favorite, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, String phoneNumber, double rating, String notes, String city) {
+    public Resto(int id, String name, int favorite, URL yelpURL, String address, URL imageUrl, String phoneNumber, double rating, String notes, String city) {
         mID = id;
         mName = name;
         mFavorite = favorite;
         mYelpURL = yelpURL;
         mAddress = address;
-        mLatitude = latitude;
-        mLongitude = longitude;
         mImageUrl = imageUrl;
         mPhoneNumber = phoneNumber;
         mRating = rating;
@@ -46,11 +43,9 @@ public class Resto implements Serializable {
         mCity = city;
     }
     //overloaded to remove favorite
-    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, String phoneNumber, double rating, String city) { mName = name;
+    public Resto(String name, URL yelpURL, String address, URL imageUrl, String phoneNumber, double rating, String city) { mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
-        mLatitude = latitude;
-        mLongitude = longitude;
         mImageUrl = imageUrl;
         mPhoneNumber = phoneNumber;
         mRating = rating;
@@ -82,6 +77,13 @@ public class Resto implements Serializable {
         mRating = rating;
     }
 
+    public boolean isFavorite(){
+        boolean result = false;
+        if(mFavorite == 1){
+            result = true;
+        }
+        return result;
+    }
     public int getFavorite() {
         return mFavorite;
     }
@@ -90,10 +92,6 @@ public class Resto implements Serializable {
         if(favorite == 1 || favorite == 0) {
             this.mFavorite = favorite;
         }
-    }
-
-    public String getDisplayName(){
-        return mName + " | " + mAddress + " | " + getRatingAsASCII();
     }
 
     public String getName() {
@@ -118,22 +116,6 @@ public class Resto implements Serializable {
 
     public void setAddress(String address) {
         mAddress = address;
-    }
-
-    public double getLatitude() {
-        return mLatitude;
-    }
-
-    public void setLatitude(double latitude) {
-        mLatitude = latitude;
-    }
-
-    public double getLongitude() {
-        return mLongitude;
-    }
-
-    public void setLongitude(double longitude) {
-        mLongitude = longitude;
     }
 
     public URL getImageUrl() {
@@ -175,6 +157,11 @@ public class Resto implements Serializable {
         }
 
         return builder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return mName + " | " + mAddress + " | " + getRatingAsASCII();
     }
 }
 

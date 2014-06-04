@@ -21,8 +21,6 @@ public class FavRestosDbAdapter {
     public static final String KEY_FAVORITE = "fav";
     public static final String KEY_YELP_URL = "yelp_url";
     public static final String KEY_ADDRESS = "address";
-    public static final String KEY_LATITUDE = "lat";
-    public static final String KEY_LONGITUDE = "lon";
     public static final String KEY_IMAGE_URL = "image_url";
     public static final String KEY_PHONE_NUMBER = "phone";
     public static final String KEY_IMAGE = "image";
@@ -35,14 +33,11 @@ public class FavRestosDbAdapter {
     public static final int KEY_FAVORITE_INDEX = 2;
     public static final int KEY_YELP_URL_INDEX = 3;
     public static final int KEY_ADDRESS_INDEX = 4;
-    public static final int KEY_LATITUDE_INDEX = 5;
-    public static final int KEY_LONGITUDE_INDEX = 6;
-    public static final int KEY_IMAGE_URL_INDEX = 7;
-    public static final int KEY_PHONE_NUMBER_INDEX = 8;
-    public static final int KEY_IMAGE_INDEX = 9;
-    public static final int KEY_RATING_INDEX = 10;
-    public static final int KEY_NOTES_INDEX = 11;
-    public static final int KEY_CITY_INDEX = 12;
+    public static final int KEY_IMAGE_URL_INDEX = 5;
+    public static final int KEY_PHONE_NUMBER_INDEX = 6;
+    public static final int KEY_RATING_INDEX = 7;
+    public static final int KEY_NOTES_INDEX = 8;
+    public static final int KEY_CITY_INDEX = 9;
 
     //used for logging
     private static final String TAG = "FavRestosDbAdapter";
@@ -65,11 +60,9 @@ public class FavRestosDbAdapter {
                     KEY_FAVORITE + " INTEGER," +
                     KEY_YELP_URL + " TEXT, " +
                     KEY_ADDRESS + " TEXT, " +
-                    KEY_LATITUDE + "  DOUBLE, " +
-                    KEY_LONGITUDE + " DOUBLE, " +
                     KEY_IMAGE_URL + " TEXT, " +
                     KEY_PHONE_NUMBER + " TEXT" +
-                    KEY_IMAGE + " BLOB, " +
+                    KEY_IMAGE_URL + " TEXT, " +
                     KEY_RATING + "DOUBLE" +
                     KEY_CITY + " TEXT);";
 
@@ -118,11 +111,8 @@ public class FavRestosDbAdapter {
         values.put(KEY_NAME, resto.getName());
         values.put(KEY_FAVORITE, resto.getFavorite());
         values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
-        values.put(KEY_LATITUDE, resto.getLatitude());
-        values.put(KEY_LONGITUDE, resto.getLongitude());
         values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
-        values.put(KEY_IMAGE, resto.getImage());
         values.put(KEY_RATING, resto.getRating());
 
         // Inserting Row
@@ -135,8 +125,8 @@ public class FavRestosDbAdapter {
     public Resto fetchFavRestoById(int id) throws MalformedURLException {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
-                        KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_LATITUDE, KEY_LONGITUDE, KEY_IMAGE_URL,
-                        KEY_PHONE_NUMBER, KEY_IMAGE, KEY_RATING, KEY_CITY}, KEY_ID + "=?",
+                        KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_IMAGE_URL,
+                        KEY_PHONE_NUMBER, KEY_RATING, KEY_CITY}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null
         );
         if (cursor != null)
@@ -153,10 +143,6 @@ public class FavRestosDbAdapter {
                 new URL(cursor.getString(KEY_YELP_URL_INDEX)),
                 //address
                 cursor.getString(KEY_ADDRESS_INDEX),
-                //lat
-                cursor.getDouble(KEY_LATITUDE_INDEX),
-                //lon
-                cursor.getDouble(KEY_LONGITUDE_INDEX),
                 //image url
                 new URL(cursor.getString(KEY_IMAGE_URL_INDEX)),
                 //phone
@@ -165,6 +151,7 @@ public class FavRestosDbAdapter {
                 cursor.getDouble(KEY_RATING_INDEX),
                 //notes
                 cursor.getString(KEY_NOTES_INDEX),
+                //city
                 cursor.getString(KEY_CITY_INDEX)
 
         );
@@ -193,8 +180,6 @@ public class FavRestosDbAdapter {
         values.put(KEY_NAME, resto.getName());
         values.put(KEY_FAVORITE, resto.getFavorite());
         values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
-        values.put(KEY_LATITUDE, resto.getLatitude());
-        values.put(KEY_LONGITUDE, resto.getLongitude());
         values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
         values.put(KEY_IMAGE_URL, resto.getImage());

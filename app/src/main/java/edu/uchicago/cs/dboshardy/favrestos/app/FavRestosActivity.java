@@ -5,24 +5,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.ActionMode;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 import java.net.MalformedURLException;
@@ -91,45 +85,62 @@ public class FavRestosActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
                             int nId = getIdFromPosition(masterListPosition);
-                Resto resto = null;
-                try {
-                    resto = mDbAdapter.fetchFavRestoById(nId);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
-                i.putExtra(Resto.RESTO_LIST,resto);
-                startActivity(i);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(FavRestosActivity.this);
-//                ListView modeList = new ListView(FavRestosActivity.this);
-//                String[] stringArray = new String[] { "Edit FavResto", "Delete FavResto" };
-//                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(FavRestosActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
-//                modeList.setAdapter(modeAdapter);
-//                builder.setView(modeList);
-//                final Dialog dialog = builder.create();
-//                dialog.show();
-//                modeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                        //edit Resto
-//                        if (position == 0){
-//
-//                            int nId = getIdFromPosition(masterListPosition);
-//                            FavResto Resto = mDbAdapter.fetchFavRestoById(nId);
-//                            fireCustomDialog(Resto);
-//
-//                            //delete Resto
-//                        } else {
-//
-//                            mDbAdapter.deleteFavRestoById(getIdFromPosition(masterListPosition));
-//                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
-//
-//                        }
-//                        dialog.dismiss();
-//                    }
-//                });
-//
+//                Resto resto = null;
+//                try {
+//                    resto = mDbAdapter.fetchFavRestoById(nId);
+//                } catch (MalformedURLException e) {
+//                    e.printStackTrace();
+//                }
+//                Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
+//                i.putExtra(Resto.RESTO_LIST,resto);
+//                startActivity(i);
+                AlertDialog.Builder builder = new AlertDialog.Builder(FavRestosActivity.this);
+                ListView modeList = new ListView(FavRestosActivity.this);
+                String[] stringArray = new String[] { "Edit", "Navigate to","Map of","Dial","Yelp Site","Delete"};
+                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(FavRestosActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
+                modeList.setAdapter(modeAdapter);
+                builder.setView(modeList);
+                final Dialog dialog = builder.create();
+                dialog.show();
+                modeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        //get resto
+                        int nId = getIdFromPosition(masterListPosition);
+                        Resto resto = null;
+                        try {
+                            resto = mDbAdapter.fetchFavRestoById(nId);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                        //do something with it
+                        if (position == 0){
+                            //edit Resto
+                            fireEditRestoDialog(resto);
+
+                        } else if (position == 1) {
+                            //implicit nav intent
+                            //TODO: Write these
+
+                        } else if (position == 2) {
+                            //implicit map intent
+                        } else if (position == 3) {
+                            //implicit call intent
+                        } else if (position == 4) {
+                            //implicit browser intent
+                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(resto.getYelpURL())));
+                            startActivity(browserIntent);
+                        } else if (position == 5) {
+                            //delete Resto
+                            mDbAdapter.deleteFavRestoById(getIdFromPosition(masterListPosition));
+                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
+
+                        }
+                        dialog.dismiss();
+                    }
+                });
+
 
             }
         });
@@ -161,6 +172,7 @@ public class FavRestosActivity extends ActionBarActivity {
 
                 @Override
                 public void onDestroyActionMode(ActionMode mode) {
+                    //TODO: Write contextual action
 
                 }
             });
@@ -169,19 +181,56 @@ public class FavRestosActivity extends ActionBarActivity {
     }
 
 
-
-    private int getIdFromPosition(int nPosition){
-        Cursor cursor = mDbAdapter.fetchAllFavRestos();
-        cursor.move(nPosition);
-        return cursor.getInt(FavRestosDbAdapter.KEY_ID_INDEX);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            mDbAdapter.updateFavResto((Resto) data.getExtras().getSerializable(Resto.RESTO));
+        }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.fav_restos_menu, menu);
+        return true;
+    }
 
-    private void fireCustomDialog(final Resto resto){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        switch (item.getItemId()){
+            case R.id.action_new:
+                //create new FavResto
+                fireEditRestoDialog(null);
+                return true;
+
+            case R.id.action_exit:
+                finish();
+                return true;
+
+            default:
+                return false;
+
+
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mDbAdapter.close();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mDbAdapter.open();
+    }
+    private void fireEditRestoDialog(final Resto resto){
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
         i.putExtra(Resto.RESTO_LIST,resto);
-        startActivity(i);
+        startActivityForResult(i, 1);
 
 
         // custom dialog final Dialog dialog = new Dialog(this);
@@ -236,43 +285,9 @@ public class FavRestosActivity extends ActionBarActivity {
 //        dialog.show();
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.fav_restos_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.action_new:
-                //create new FavResto
-                fireCustomDialog(null);
-                return true;
-
-            case R.id.action_exit:
-                finish();
-                return true;
-
-            default:
-                return false;
-
-
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mDbAdapter.close();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mDbAdapter.open();
+    private int getIdFromPosition(int nPosition){
+        Cursor cursor = mDbAdapter.fetchAllFavRestos();
+        cursor.move(nPosition);
+        return cursor.getInt(FavRestosDbAdapter.KEY_ID_INDEX);
     }
 }

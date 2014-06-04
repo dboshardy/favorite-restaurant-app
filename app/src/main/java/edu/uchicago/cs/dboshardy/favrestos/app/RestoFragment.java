@@ -1,8 +1,10 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class RestoFragment extends DialogFragment {
@@ -18,6 +21,7 @@ public class RestoFragment extends DialogFragment {
     private ArrayList<Resto> mRestos;
     private AbsListView mRestoList;
     private RestoListAdapter<Resto> myAdapter;
+    private Resto mResto;
 
     // TODO: Rename and change types of parameters
     public static RestoFragment newInstance(ArrayList<Resto> restos) {
@@ -35,6 +39,7 @@ public class RestoFragment extends DialogFragment {
     public RestoFragment() {
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         mRestos = (ArrayList<Resto>) getArguments().getSerializable(Resto.RESTO_LIST);
@@ -49,7 +54,7 @@ public class RestoFragment extends DialogFragment {
     }
 
 
-    private class RestoListAdapter<Resto> extends ArrayAdapter<Resto> {
+    public class RestoListAdapter<Resto extends Serializable> extends ArrayAdapter<Resto> {
         private final ArrayList<Resto> mRestos;
 
         public RestoListAdapter(ArrayList<Resto> restos) {
@@ -66,15 +71,16 @@ public class RestoFragment extends DialogFragment {
             }
 
 
-            final Resto resto = getItem(position);
 
+            final Resto resto = getItem(position);
             final TextView textView = (TextView) convertView.findViewById(R.id.resto_list_item);
-           // textView.setText((CharSequence) resto.getDisplayName());
+            textView.setText(resto.toString());
+            textView.setTextColor(getActivity().getApplicationContext().getResources().getColor(R.color.black));
             textView.setOnClickListener(new View.OnClickListener() {
-                //TODO: Define what happens on click
+
                 @Override
                 public void onClick(View v) {
-                    sendResult();
+                    sendResult(resto);
                     dismiss();
                 }
             });
@@ -83,9 +89,12 @@ public class RestoFragment extends DialogFragment {
             return convertView;
         }
 
-        public void sendResult() {
+        public void sendResult(Resto resto) {
+            Resto myResto = resto;
             Intent i = new Intent();
-            getTargetFragment().onActivityResult(getTargetRequestCode(), 0, i);
+            i.putExtra("resto", myResto);
+            getTargetFragment().onActivityResult(getTargetRequestCode(), 5, i);
+
         }
 
     }
