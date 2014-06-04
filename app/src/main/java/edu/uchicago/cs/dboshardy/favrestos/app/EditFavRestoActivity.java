@@ -95,7 +95,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
         private String mCity;
         private ImageView mImageView;
 
-        //TODO: Add viewgroups and instantiate them
         public EditFavRestoFragment() {
         }
         private void drawRestoViews(final Resto resto) {
@@ -132,6 +131,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 }
             });
             mFavoriteCheckBox.setChecked(resto.isFavorite());
+            mFavoriteCheckBox.isClickable();
             mFavoriteCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -142,6 +142,12 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         resto.setFavorite(1);
                     }
                     mFavoriteCheckBox.setChecked(resto.isFavorite());
+                    if(resto.isFavorite()){
+                        mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
+                    }
+                    else {
+                        mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
+                    }
                 }
             });
             if(resto.isFavorite()){
@@ -256,15 +262,12 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         fetcher.execute();
                     }
                     else {
-                        Toast.makeText(EditFavRestoActivity.this,"Please enter a name and city and press the \"Fetch\" button.",Toast.LENGTH_LONG);
+                        Toast.makeText(EditFavRestoActivity.this,"Please enter a name and city and press the \"Fetch\" button.",Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
             mImageView = (ImageView) rootView.findViewById(R.id.image_view);
-            if(mImage != null){
-
-            }
             mEditPhone = (EditText) rootView.findViewById(R.id.edit_phone);
             mEditAddress = (EditText) rootView.findViewById(R.id.edit_address);
             mEditYelpURL = (EditText) rootView.findViewById(R.id.edit_yelp_url);
@@ -299,9 +302,8 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     mYelpResponse = response;
 
                 } catch (Exception e) {
-                    Toast.makeText(getActivity(), "Could not fetch details from Yelp.", Toast.LENGTH_LONG);
+                    Toast.makeText(getActivity(), "Could not fetch details from Yelp.", Toast.LENGTH_LONG).show();
 
-                    e.printStackTrace();
                 }
                 return null;
             }
@@ -341,7 +343,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         String city = location.getString("city");
                         resto = new Resto(name, mobileUrl, address, imageUrl, phone, rating, city);
                     } catch (JSONException e) {
-                        Toast.makeText(getActivity(), "Could not parse businesses.", Toast.LENGTH_LONG);
+                        Toast.makeText(getActivity(), "Could not parse businesses.", Toast.LENGTH_LONG).show();
                         Log.e("ERROR:", "JSON PARSING ERROR for: " + i);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();

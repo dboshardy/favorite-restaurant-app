@@ -185,7 +185,14 @@ public class FavRestosActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-            mDbAdapter.updateFavResto((Resto) data.getExtras().getSerializable(Resto.RESTO));
+            Resto resto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
+            if(mDbAdapter.dbContainsResto(resto)){
+                mDbAdapter.createFavResto(resto);
+            }
+            else {
+
+                mDbAdapter.updateFavResto((resto));
+            }
         }
     }
 
@@ -231,7 +238,6 @@ public class FavRestosActivity extends ActionBarActivity {
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
         i.putExtra(Resto.RESTO_LIST,resto);
         startActivityForResult(i, 1);
-
 
         // custom dialog final Dialog dialog = new Dialog(this);
 //        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -283,7 +289,6 @@ public class FavRestosActivity extends ActionBarActivity {
 //
 //
 //        dialog.show();
-
     }
     private int getIdFromPosition(int nPosition){
         Cursor cursor = mDbAdapter.fetchAllFavRestos();

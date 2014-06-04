@@ -11,6 +11,8 @@ import android.util.Log;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.net.ssl.TrustManagerFactory;
+
 import edu.uchicago.cs.dboshardy.favrestos.app.Resto;
 
 public class FavRestosDbAdapter {
@@ -192,6 +194,21 @@ public class FavRestosDbAdapter {
 
     }
 
+    //contains?
+    public boolean dbContainsResto(Resto resto) {
+        String name = resto.getName();
+        String address = resto.getAddress();
+
+        String query = "Select * from " + TABLE_NAME + " where " + KEY_NAME + "="
+                + name + " AND " + KEY_ADDRESS + "=" + address;
+        Cursor cursor = mDb.rawQuery(query, null);
+        if (cursor.getCount() <= 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
     //DELETE
     public void deleteFavRestoById(int nId) {
