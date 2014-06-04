@@ -160,7 +160,7 @@ public class FavRestosDbAdapter {
                 //image url
                 new URL(cursor.getString(KEY_IMAGE_URL_INDEX)),
                 //phone
-                cursor.getInt(KEY_PHONE_NUMBER_INDEX),
+                cursor.getString(KEY_PHONE_NUMBER_INDEX),
                 //rating
                 cursor.getDouble(KEY_RATING_INDEX),
                 //notes

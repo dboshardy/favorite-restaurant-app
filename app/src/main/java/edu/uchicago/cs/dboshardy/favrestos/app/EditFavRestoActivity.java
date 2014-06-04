@@ -91,6 +91,22 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public EditFavRestoFragment() {
         }
 
+        public String getName() {
+            return mName;
+        }
+
+        public void setName(String name) {
+            mName = name;
+        }
+
+        public String getCity() {
+            return mCity;
+        }
+
+        public void setCity(String city) {
+            mCity = city;
+        }
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -213,7 +229,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         JSONObject entry = mJS.getJSONObject(i);
                         String name = entry.getString("name");
                         URL mobileUrl = new URL(entry.getString("mobile_url"));
-                        int phone = Integer.parseInt(entry.getString("display_phone"));
+                        String phone = entry.getString("display_phone");
                         double rating = Double.parseDouble(entry.getString("rating"));
                         URL imageUrl = new URL(entry.getString("image_url"));
                         JSONObject location = entry.getJSONObject("location");
@@ -222,7 +238,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         double lat = Double.parseDouble(center.getString("latitude"));
                         double lon = Double.parseDouble(center.getString("longitude"));
                         String address = location.getString("address");
-                        Resto resto = new Resto(name,mobileUrl,address,lat,lon,imageUrl,phone,rating);
+                        Resto resto = new Resto(name,mobileUrl,address,lat,lon,imageUrl,phone,rating,getCity());
                         mRestos.add(resto);
                     }
 

@@ -16,7 +16,7 @@ public class Resto implements Serializable {
     private double mLongitude;
     private URL mImageUrl;
     private byte[] mImage;
-    private int mPhoneNumber;
+    private String mPhoneNumber;
     private double mRating;
     private int mFavorite;
     private String mNotes;
@@ -31,7 +31,7 @@ public class Resto implements Serializable {
     }
 
     //full constructor
-    public Resto(int id, String name, int favorite, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating, String notes, String city) {
+    public Resto(int id, String name, int favorite, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, String phoneNumber, double rating, String notes, String city) {
         mID = id;
         mName = name;
         mFavorite = favorite;
@@ -46,7 +46,7 @@ public class Resto implements Serializable {
         mCity = city;
     }
     //overloaded to remove favorite
-    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, int phoneNumber, double rating, String city) { mName = name;
+    public Resto(String name, URL yelpURL, String address, double latitude, double longitude, URL imageUrl, String phoneNumber, double rating, String city) { mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
         mLatitude = latitude;
@@ -152,11 +152,11 @@ public class Resto implements Serializable {
         mImage = image;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return mPhoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         mPhoneNumber = phoneNumber;
     }
 
