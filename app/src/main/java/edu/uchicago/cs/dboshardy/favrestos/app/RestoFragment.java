@@ -80,7 +80,7 @@ public class RestoFragment extends DialogFragment {
 
                 @Override
                 public void onClick(View v) {
-                    sendResult(resto);
+                    sendResult(position);
                     dismiss();
                 }
             });
@@ -89,9 +89,9 @@ public class RestoFragment extends DialogFragment {
             return convertView;
         }
 
-        public void sendResult(Resto resto) {
-            Intent i = new Intent(getActivity(),EditFavRestoActivity.class);
-            i.putExtra("resto",resto);
+        public void sendResult(int position) {
+            Intent i = new Intent();
+            i.putExtra("position",position);
             getTargetFragment().onActivityResult(getTargetRequestCode(), 5, i);
 
         }

@@ -1,6 +1,7 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
 import android.annotation.TargetApi;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -155,7 +156,9 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             if(resultCode==5){
-                mResto = (Resto) data.getExtras().getSerializable("resto");
+                int index;
+                index = data.getExtras().getInt("position");
+                mResto = mRestos.get(index);
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);
@@ -350,10 +353,12 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     }
                 }
 
+                android.support.v4.app.FragmentManager fm = getActivity().getSupportFragmentManager();
                 Bundle args = new Bundle();
-                args.putSerializable(Resto.RESTO_LIST,mRestos);
+                args.putSerializable(Resto.RESTO_LIST, mRestos);
                 RestoFragment dialog = RestoFragment.newInstance(mRestos);
-                dialog.show(getFragmentManager(),"dialog");
+                dialog.setTargetFragment(EditFavRestoFragment.this,5);
+                dialog.show(fm,"dialog");
 
             }
 
