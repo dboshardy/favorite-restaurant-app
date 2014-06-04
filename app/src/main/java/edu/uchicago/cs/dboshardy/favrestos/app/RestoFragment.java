@@ -90,9 +90,8 @@ public class RestoFragment extends DialogFragment {
         }
 
         public void sendResult(Resto resto) {
-            Resto myResto = resto;
-            Intent i = new Intent();
-            i.putExtra("resto", myResto);
+            Intent i = new Intent(getActivity(),EditFavRestoActivity.class);
+            i.putExtra("resto",resto);
             getTargetFragment().onActivityResult(getTargetRequestCode(), 5, i);
 
         }

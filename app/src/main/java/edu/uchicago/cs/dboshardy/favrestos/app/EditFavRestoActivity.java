@@ -155,7 +155,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
             if(resultCode==5){
-                mResto = (Resto) data.getExtras().get("resto");
+                mResto = (Resto) data.getExtras().getSerializable("resto");
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);

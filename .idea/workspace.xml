@@ -44,13 +44,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89e6dd72-c774-47b7-8b47-59e0f8fdd5d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FavRestos.iws" />
@@ -77,8 +72,8 @@
       <file leaf-file-name="EditFavRestoActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3166227" vertical-offset="2190" max-vertical-offset="5850">
-              <caret line="154" column="80" selection-start-line="154" selection-start-column="80" selection-end-line="154" selection-end-column="80" />
+            <state vertical-scroll-proportion="0.47826087" vertical-offset="2190" max-vertical-offset="5850">
+              <caret line="157" column="65" selection-start-line="157" selection-start-column="65" selection-end-line="157" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1287#1294#0" expanded="true" />
@@ -90,14 +85,14 @@
                 <element signature="e#4619#4620#0" expanded="true" />
                 <element signature="e#4748#5171#0" expanded="true" />
                 <element signature="e#5156#5157#0" expanded="true" />
-                <element signature="e#6278#6279#0" expanded="true" />
-                <element signature="e#6314#6315#0" expanded="true" />
-                <element signature="e#7923#8362#0" expanded="true" />
-                <element signature="e#8347#8348#0" expanded="true" />
-                <element signature="e#8490#8972#0" expanded="true" />
-                <element signature="e#8957#8958#0" expanded="true" />
-                <element signature="e#9097#9623#0" expanded="true" />
-                <element signature="e#9608#9609#0" expanded="true" />
+                <element signature="e#6290#6291#0" expanded="true" />
+                <element signature="e#6326#6327#0" expanded="true" />
+                <element signature="e#7935#8374#0" expanded="true" />
+                <element signature="e#8359#8360#0" expanded="true" />
+                <element signature="e#8502#8984#0" expanded="true" />
+                <element signature="e#8969#8970#0" expanded="true" />
+                <element signature="e#9109#9635#0" expanded="true" />
+                <element signature="e#9620#9621#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,8 +134,8 @@
       <file leaf-file-name="RestoFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1395">
-              <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1380">
+              <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
               <folding>
                 <element signature="e#2907#3110#0" expanded="true" />
                 <element signature="e#3095#3096#0" expanded="true" />
@@ -1629,7 +1624,11 @@
       <created>1401846920291</created>
       <updated>1401846920291</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lots of changes. Kinda works. Still working.">
+      <created>1401860152931</created>
+      <updated>1401860152931</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1663,13 +1662,13 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48154092" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38202247" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38202247" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5714286" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1736,11 +1735,20 @@
     <MESSAGE value="Committing to update repo before work.&#10;" />
     <MESSAGE value="Formatted code and fixed some stupid errors. Also&#10;deleted FavResto class and added mCity to Resto." />
     <MESSAGE value="Corrected more errors and changed phone number&#10;to string." />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected more errors and changed phone number&#10;to string." />
+    <MESSAGE value="Lots of changes. Kinda works. Still working." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lots of changes. Kinda works. Still working." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java</url>
+          <line>92</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -2206,8 +2214,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1395">
-          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1380">
+          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
           <folding>
             <element signature="e#2907#3110#0" expanded="true" />
             <element signature="e#3095#3096#0" expanded="true" />
@@ -2217,8 +2225,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3166227" vertical-offset="2190" max-vertical-offset="5850">
-          <caret line="154" column="80" selection-start-line="154" selection-start-column="80" selection-end-line="154" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.47826087" vertical-offset="2190" max-vertical-offset="5850">
+          <caret line="157" column="65" selection-start-line="157" selection-start-column="65" selection-end-line="157" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1287#1294#0" expanded="true" />
@@ -2230,14 +2238,14 @@
             <element signature="e#4619#4620#0" expanded="true" />
             <element signature="e#4748#5171#0" expanded="true" />
             <element signature="e#5156#5157#0" expanded="true" />
-            <element signature="e#6278#6279#0" expanded="true" />
-            <element signature="e#6314#6315#0" expanded="true" />
-            <element signature="e#7923#8362#0" expanded="true" />
-            <element signature="e#8347#8348#0" expanded="true" />
-            <element signature="e#8490#8972#0" expanded="true" />
-            <element signature="e#8957#8958#0" expanded="true" />
-            <element signature="e#9097#9623#0" expanded="true" />
-            <element signature="e#9608#9609#0" expanded="true" />
+            <element signature="e#6290#6291#0" expanded="true" />
+            <element signature="e#6326#6327#0" expanded="true" />
+            <element signature="e#7935#8374#0" expanded="true" />
+            <element signature="e#8359#8360#0" expanded="true" />
+            <element signature="e#8502#8984#0" expanded="true" />
+            <element signature="e#8969#8970#0" expanded="true" />
+            <element signature="e#9109#9635#0" expanded="true" />
+            <element signature="e#9620#9621#0" expanded="true" />
           </folding>
         </state>
       </provider>
