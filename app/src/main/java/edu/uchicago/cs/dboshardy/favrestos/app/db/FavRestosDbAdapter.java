@@ -116,8 +116,8 @@ public class FavRestosDbAdapter {
         values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
         values.put(KEY_RATING, resto.getRating());
-        values.put(KEY_NOTES,resto.getNotes());
-        values.put(KEY_CITY,resto.getCity());
+        values.put(KEY_NOTES, resto.getNotes());
+        values.put(KEY_CITY, resto.getCity());
 
         // Inserting Row
         return mDb.insert(TABLE_NAME, null, values);
@@ -130,7 +130,7 @@ public class FavRestosDbAdapter {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
                         KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_IMAGE_URL,
-                        KEY_PHONE_NUMBER, KEY_RATING,KEY_NOTES, KEY_CITY}, KEY_ID + "=?",
+                        KEY_PHONE_NUMBER, KEY_RATING, KEY_NOTES, KEY_CITY}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null
         );
         if (cursor != null)
@@ -163,7 +163,7 @@ public class FavRestosDbAdapter {
     public Cursor fetchAllFavRestos() {
 
         Cursor mCursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
-                        KEY_NAME, KEY_FAVORITE,KEY_ADDRESS,KEY_YELP_URL,KEY_IMAGE_URL,KEY_PHONE_NUMBER,KEY_RATING,KEY_NOTES,KEY_CITY},
+                        KEY_NAME, KEY_FAVORITE, KEY_ADDRESS, KEY_YELP_URL, KEY_IMAGE_URL, KEY_PHONE_NUMBER, KEY_RATING, KEY_NOTES, KEY_CITY},
                 null, null, null, null, null
         );
 
@@ -199,13 +199,12 @@ public class FavRestosDbAdapter {
         String address = resto.getAddress();
 
         String query = "Select * from " + TABLE_NAME + " where " + KEY_NAME + "="
-                +"\""+ name +"\""+ " AND " + KEY_ADDRESS + "=" +"\""+address+"\"";
+                + "\"" + name + "\"" + " AND " + KEY_ADDRESS + "=" + "\"" + address + "\"";
         Cursor cursor = mDb.rawQuery(query, null);
         if (cursor.getCount() <= 0) {
             cursor.close();
             return false;
-        }
-        else {
+        } else {
             cursor.moveToFirst();
             cursor.close();
             return true;

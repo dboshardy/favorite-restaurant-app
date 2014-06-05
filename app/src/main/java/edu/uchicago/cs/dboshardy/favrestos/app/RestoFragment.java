@@ -71,7 +71,6 @@ public class RestoFragment extends DialogFragment {
             }
 
 
-
             final Resto resto = getItem(position);
             final TextView textView = (TextView) convertView.findViewById(R.id.resto_list_item);
             textView.setText(resto.toString());
@@ -91,7 +90,7 @@ public class RestoFragment extends DialogFragment {
 
         public void sendResult(int position) {
             Intent i = new Intent();
-            i.putExtra("position",position);
+            i.putExtra("position", position);
             getTargetFragment().onActivityResult(getTargetRequestCode(), 5, i);
 
         }

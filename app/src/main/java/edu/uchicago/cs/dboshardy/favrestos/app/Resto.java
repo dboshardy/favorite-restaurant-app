@@ -9,7 +9,7 @@ import java.net.URL;
 public class Resto implements Serializable {
     public static final String RESTO_LIST = "edu.uchicago.cs.dboshardy.favrestos.app.resto_list";
     public static final String RESTO = "edu.uchicago.cs.dboshardy.favrestos.app.resto_to_deal_with";
-    private int mID=0;
+    private int mID = 0;
     private String mName;
     private URL mYelpURL;
     private String mAddress;
@@ -42,8 +42,10 @@ public class Resto implements Serializable {
         mNotes = notes;
         mCity = city;
     }
+
     //overloaded to remove favorite
-    public Resto(String name, URL yelpURL, String address, URL imageUrl, String phoneNumber, double rating, String city) { mName = name;
+    public Resto(String name, URL yelpURL, String address, URL imageUrl, String phoneNumber, double rating, String city) {
+        mName = name;
         mYelpURL = yelpURL;
         mAddress = address;
         mImageUrl = imageUrl;
@@ -78,19 +80,20 @@ public class Resto implements Serializable {
         mRating = rating;
     }
 
-    public boolean isFavorite(){
+    public boolean isFavorite() {
         boolean result = false;
-        if(mFavorite == 1){
+        if (mFavorite == 1) {
             result = true;
         }
         return result;
     }
+
     public int getFavorite() {
         return mFavorite;
     }
 
     public void setFavorite(int favorite) {
-        if(favorite == 1 || favorite == 0) {
+        if (favorite == 1 || favorite == 0) {
             this.mFavorite = favorite;
         }
     }
@@ -146,12 +149,11 @@ public class Resto implements Serializable {
     public String getRatingAsASCII() {
         double rating = mRating;
         StringBuilder builder = new StringBuilder();
-        while(rating !=0){
-            if(rating < 0){
-                builder.append(Character.toString((char)189));
+        while (rating != 0) {
+            if (rating < 0) {
+                builder.append(Character.toString((char) 189));
                 break;
-            }
-            else {
+            } else {
                 builder.append("*");
             }
             rating--;
@@ -167,7 +169,7 @@ public class Resto implements Serializable {
 
     public boolean hasID() {
         boolean result = false;
-        if(mID!=0){
+        if (mID != 0) {
             result = true;
         }
         return result;

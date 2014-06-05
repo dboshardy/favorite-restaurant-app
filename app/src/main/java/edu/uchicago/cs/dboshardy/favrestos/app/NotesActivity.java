@@ -27,12 +27,12 @@ public class NotesActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        mResto = (Resto) getIntent().getSerializableExtra(Resto.RESTO);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new NoteFragment(mResto))
                     .commit();
         }
-        mResto = (Resto) getIntent().getSerializableExtra(Resto.RESTO);
     }
 
 
@@ -67,17 +67,22 @@ public class NotesActivity extends ActionBarActivity {
 
         public NoteFragment() {
         }
+
         public NoteFragment(Resto resto) {
             mFragmentResto = resto;
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_notes, container, false);
             mHeaderText = (TextView) rootView.findViewById(R.id.notes_header);
-            mHeaderText.setText("Notes for: "+ mFragmentResto.getName()+" in "+mFragmentResto.getCity());
+            mHeaderText.setText("Notes for: " + mFragmentResto.getName() + " in " + mFragmentResto.getCity());
             mNotes = (EditText) rootView.findViewById(R.id.edit_note);
+            if (!mFragmentResto.getNotes().equals("") && mFragmentResto != null) {
+                mNotes.setText(mFragmentResto.getNotes());
+
+            }
             mNotes.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -113,9 +118,10 @@ public class NotesActivity extends ActionBarActivity {
 
             return rootView;
         }
-        private void sendResult(){
+
+        private void sendResult() {
             Intent i = new Intent();
-            i.putExtra(Resto.RESTO,mFragmentResto);
+            i.putExtra(Resto.RESTO, mFragmentResto);
 
         }
     }

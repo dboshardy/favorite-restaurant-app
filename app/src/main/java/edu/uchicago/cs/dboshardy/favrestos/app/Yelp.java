@@ -30,13 +30,13 @@ public class Yelp {
 
     /**
      * Setup the Yelp API OAuth credentials.
-     *
+     * <p/>
      * OAuth credentials are available from the developer site, under Manage API access (version 2 API).
      *
-     * @param consumerKey Consumer key
+     * @param consumerKey    Consumer key
      * @param consumerSecret Consumer secret
-     * @param token Token
-     * @param tokenSecret Token secret
+     * @param token          Token
+     * @param tokenSecret    Token secret
      */
     public Yelp(String consumerKey, String consumerSecret, String token, String tokenSecret) {
         this.service = new ServiceBuilder().provider(YelpApi2.class).apiKey(consumerKey).apiSecret(consumerSecret).build();
@@ -46,8 +46,8 @@ public class Yelp {
     /**
      * Search with term and location.
      *
-     * @param term Search term
-     * @param latitude Latitude
+     * @param term      Search term
+     * @param latitude  Latitude
      * @param longitude Longitude
      * @return JSON string response
      */
@@ -61,7 +61,7 @@ public class Yelp {
 
     }
 
-    public String search(String term, String city){
+    public String search(String term, String city) {
         OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
         request.addQuerystringParameter("term", term);
         request.addQuerystringParameter("location", city);

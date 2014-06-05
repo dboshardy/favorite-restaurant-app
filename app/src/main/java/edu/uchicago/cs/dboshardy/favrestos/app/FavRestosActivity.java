@@ -79,7 +79,7 @@ public class FavRestosActivity extends ActionBarActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int masterListPosition, long id) {
-                            int nId = getIdFromPosition(masterListPosition);
+                int nId = getIdFromPosition(masterListPosition);
 //                Resto resto = null;
 //                try {
 //                    resto = mDbAdapter.fetchFavRestoById(nId);
@@ -91,7 +91,7 @@ public class FavRestosActivity extends ActionBarActivity {
 //                startActivity(i);
                 AlertDialog.Builder builder = new AlertDialog.Builder(FavRestosActivity.this);
                 ListView modeList = new ListView(FavRestosActivity.this);
-                String[] stringArray = new String[] { "Edit", "Navigate to","Map of","Dial","Yelp Site","Delete"};
+                String[] stringArray = new String[]{"Edit", "Navigate to", "Map of", "Dial", "Yelp Site", "Delete"};
                 ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(FavRestosActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, stringArray);
                 modeList.setAdapter(modeAdapter);
                 builder.setView(modeList);
@@ -110,7 +110,7 @@ public class FavRestosActivity extends ActionBarActivity {
                             e.printStackTrace();
                         }
                         //do something with it
-                        if (position == 0){
+                        if (position == 0) {
                             //edit Resto
                             fireEditRestoDialog(resto);
 
@@ -143,7 +143,7 @@ public class FavRestosActivity extends ActionBarActivity {
         });
 
         //contextual action mode set-up
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
             mListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
                 @Override
@@ -197,16 +197,15 @@ public class FavRestosActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             Resto resto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
             mDbAdapter.open();
-            if(mDbAdapter.dbContainsResto(resto)){
+            if (mDbAdapter.dbContainsResto(resto)) {
                 mDbAdapter.updateFavResto((resto));
-                Log.w("myApp","Updated : "+resto.toString());
-            }
-            else {
+                Log.w("myApp", "Updated : " + resto.toString());
+            } else {
                 mDbAdapter.createFavResto(resto);
-                Log.w("myApp","Inserted : "+resto.toString());
+                Log.w("myApp", "Inserted : " + resto.toString());
             }
             mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
         }
@@ -222,7 +221,7 @@ public class FavRestosActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_new:
                 //create new FavResto
                 fireEditRestoDialog(null);
@@ -250,9 +249,10 @@ public class FavRestosActivity extends ActionBarActivity {
         super.onResume();
         mDbAdapter.open();
     }
-    private void fireEditRestoDialog(final Resto resto){
+
+    private void fireEditRestoDialog(final Resto resto) {
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
-        i.putExtra(Resto.RESTO,resto);
+        i.putExtra(Resto.RESTO, resto);
         startActivityForResult(i, 1);
 
         // custom dialog final Dialog dialog = new Dialog(this);
@@ -306,7 +306,8 @@ public class FavRestosActivity extends ActionBarActivity {
 //
 //        dialog.show();
     }
-    private int getIdFromPosition(int nPosition){
+
+    private int getIdFromPosition(int nPosition) {
         Cursor cursor = mDbAdapter.fetchAllFavRestos();
         cursor.move(nPosition);
         return cursor.getInt(FavRestosDbAdapter.KEY_ID_INDEX);

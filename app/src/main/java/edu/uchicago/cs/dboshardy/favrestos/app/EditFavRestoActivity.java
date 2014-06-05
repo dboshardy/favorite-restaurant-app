@@ -100,6 +100,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
         public EditFavRestoFragment() {
         }
+
         private void drawRestoViews(final Resto resto) {
             hasSearchedFlag = true;
             mSearchResto.setText(resto.getName());
@@ -174,8 +175,8 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(EditFavRestoActivity.this, NotesActivity.class);
-                    i.putExtra(Resto.RESTO,mResto);
-                    startActivityForResult(i,1);
+                    i.putExtra(Resto.RESTO, mResto);
+                    startActivityForResult(i, 1);
                 }
             });
             mTextAddress.setTextColor(getApplicationContext().getResources().getColor(R.color.blue));
@@ -204,12 +205,11 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mFavoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                   if(isChecked) {
-                       resto.setFavorite(1);
-                   }
-                    else {
-                       resto.setFavorite(0);
-                   }
+                    if (isChecked) {
+                        resto.setFavorite(1);
+                    } else {
+                        resto.setFavorite(0);
+                    }
                     if (resto.isFavorite()) {
                         mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
                     } else {
@@ -218,7 +218,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
                 }
             });
-            if(mImage != null){
+            if (mImage != null) {
                 mImageView.setImageDrawable(mImage);
             }
         }
@@ -226,21 +226,25 @@ public class EditFavRestoActivity extends ActionBarActivity {
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            if(resultCode==5){
+            if (resultCode == 5) {
+                //take data from dialog
                 int index;
                 index = data.getExtras().getInt("position");
                 mResto = mRestos.get(index);
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);
+            } else if (resultCode == RESULT_OK) {
+                //notes activity is done, no need to redraw screen
+                mResto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
             }
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            //TODO: add parsing to check if you're passing in a resto or not
             View rootView = inflater.inflate(R.layout.fragment_edit_fav_resto, container, false);
+            mEditNoteButton = (Button) rootView.findViewById(R.id.edit_notes_button);
             mSearchCity = (EditText) rootView.findViewById(R.id.search_city);
             mSearchCity.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -292,7 +296,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mUpdateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(hasSearchedFlag) {
+                    if (hasSearchedFlag) {
                         Intent data = new Intent();
                         data.putExtra(Resto.RESTO, mResto);
                         if (getParent() == null) {
@@ -300,23 +304,21 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         } else {
                             getParent().setResult(RESULT_OK, data);
                         }
+                    } else {
+                        Toast.makeText(EditFavRestoActivity.this, "Please search for the data using yelp", Toast.LENGTH_LONG).show();
                     }
-                    else {
-                        Toast.makeText(EditFavRestoActivity.this,"Please search for the data using yelp",Toast.LENGTH_LONG).show();
-                    }
-                        finish();
+                    finish();
                 }
             });
             mFetchButton = (Button) rootView.findViewById(R.id.fetch_button);
             mFetchButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!(mCity == null || mName == null)) {
+                    if (!(mCity == null || mName == null)) {
                         YelpFetchTask fetcher = new YelpFetchTask();
                         fetcher.execute();
-                    }
-                    else {
-                        Toast.makeText(EditFavRestoActivity.this,"Please enter a name and city and press the \"Fetch\" button.",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(EditFavRestoActivity.this, "Please enter a name and city and press the \"Fetch\" button.", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -330,7 +332,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextYelpURL = (TextView) rootView.findViewById(R.id.text_yelp_url);
             mFavoriteCheckBox = (CheckBox) rootView.findViewById(R.id.favorite_checked);
             mFavoriteColorView = rootView.findViewById(R.id.favorite_color_view);
-            if(mResto != null){
+            if (mResto != null) {
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);
@@ -419,7 +421,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 args.putSerializable(Resto.RESTO_LIST, mRestos);
                 RestoFragment dialog = RestoFragment.newInstance(mRestos);
                 dialog.setTargetFragment(EditFavRestoFragment.this, 5);
-                dialog.show(fm,"dialog");
+                dialog.show(fm, "dialog");
 
             }
 
@@ -455,12 +457,4 @@ public class EditFavRestoActivity extends ActionBarActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RESULT_OK){
-            //notes activity is done, no need to redraw screen
-            mResto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
-        }
-    }
 }
