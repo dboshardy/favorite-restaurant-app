@@ -101,6 +101,60 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mEditPhone.setText(resto.getPhoneNumber());
             mEditAddress.setText(resto.getAddress());
             mEditYelpURL.setText(String.valueOf(resto.getYelpURL()));
+            mEditPhone.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mResto.setPhoneNumber(s.toString());
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+            mEditAddress.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mResto.setAddress(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+            mEditYelpURL.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    try {
+                        mResto.setYelpURL(new URL(s.toString()));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
             mTextPhone.setTextColor(getApplicationContext().getResources().getColor(R.color.blue));
             mTextPhone.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -357,7 +411,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 Bundle args = new Bundle();
                 args.putSerializable(Resto.RESTO_LIST, mRestos);
                 RestoFragment dialog = RestoFragment.newInstance(mRestos);
-                dialog.setTargetFragment(EditFavRestoFragment.this,5);
+                dialog.setTargetFragment(EditFavRestoFragment.this, 5);
                 dialog.show(fm,"dialog");
 
             }

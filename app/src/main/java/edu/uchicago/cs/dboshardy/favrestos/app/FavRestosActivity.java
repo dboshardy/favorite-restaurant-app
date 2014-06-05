@@ -43,13 +43,6 @@ public class FavRestosActivity extends ActionBarActivity {
 
         mDbAdapter = new FavRestosDbAdapter(this);
         mDbAdapter.open();
-
-        if (savedInstanceState == null) {
-            //Clean all data
-            mDbAdapter.deleteAllFavRestos();
-            //Add some data
-        }
-
         Cursor cursor = mDbAdapter.fetchAllFavRestos();
 
         //from columns defined in the db

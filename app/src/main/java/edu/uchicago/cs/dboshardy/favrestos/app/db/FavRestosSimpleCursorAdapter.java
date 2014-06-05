@@ -30,7 +30,7 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
             holder = new ViewHolder();
 
-            holder.colName = cursor.getColumnIndexOrThrow(edu.uchicago.cs.dboshardy.favrestos.app.db.FavRestosDbAdapter.KEY_NAME);
+            holder.colName = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_NAME);
             holder.colFavorite = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_FAVORITE);
             holder.colYelpURL = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_YELP_URL);
             holder.colAddress = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_ADDRESS);
@@ -51,8 +51,6 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
             holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.orange));
         else
             holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.green));
-
-
     }
 
     static class ViewHolder {
