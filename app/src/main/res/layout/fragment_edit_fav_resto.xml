@@ -251,6 +251,17 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="6dp"
             android:background="@color/dark_grey" />
+        <Button
+            android:text="@string/edit_notes"
+            android:id="@+id/"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/dark_grey" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"

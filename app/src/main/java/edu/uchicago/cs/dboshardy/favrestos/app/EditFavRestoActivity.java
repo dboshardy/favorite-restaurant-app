@@ -89,6 +89,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
         private TextView mTextYelpURL;
         private CheckBox mFavoriteCheckBox;
         private View mFavoriteColorView;
+        private Button mEditNoteButton;
         private Drawable mImage;
         private String mYelpResponse;
         private JSONObject mJson;
@@ -167,6 +168,14 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     //TODO: call intent
 
 
+                }
+            });
+            mEditNoteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(EditFavRestoActivity.this, NotesActivity.class);
+                    i.putExtra(Resto.RESTO,mResto);
+                    startActivityForResult(i,1);
                 }
             });
             mTextAddress.setTextColor(getApplicationContext().getResources().getColor(R.color.blue));
@@ -424,7 +433,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
 
             @Override
             protected Drawable doInBackground(String... urls) {
-                //TODO: Make image stuff work
                 Drawable d = null;
                 try {
                     InputStream is = (InputStream) new URL(urls[0]).getContent();
@@ -447,4 +455,12 @@ public class EditFavRestoActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RESULT_OK){
+            //notes activity is done, no need to redraw screen
+            mResto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
+        }
+    }
 }

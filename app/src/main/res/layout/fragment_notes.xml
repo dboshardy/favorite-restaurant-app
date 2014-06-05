@@ -27,6 +27,7 @@
     <EditText
         android:hint="@string/enter_note"
         android:gravity="top"
+        android:id="@+id/edit_note"
         android:background="@color/white"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>

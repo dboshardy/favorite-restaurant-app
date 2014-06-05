@@ -1,19 +1,27 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import org.w3c.dom.Text;
 
 
 public class NotesActivity extends ActionBarActivity {
+    Resto mResto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +29,10 @@ public class NotesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_notes);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new NoteFragment(mResto))
                     .commit();
         }
+        mResto = (Resto) getIntent().getSerializableExtra(Resto.RESTO);
     }
 
 
@@ -49,16 +58,65 @@ public class NotesActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public class NoteFragment extends Fragment {
+        TextView mHeaderText;
+        EditText mNotes;
+        Button mCancelButton;
+        Button mSaveButton;
+        Resto mFragmentResto;
 
-        public PlaceholderFragment() {
+        public NoteFragment() {
+        }
+        public NoteFragment(Resto resto) {
+            mFragmentResto = resto;
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_notes, container, false);
+            mHeaderText = (TextView) rootView.findViewById(R.id.notes_header);
+            mHeaderText.setText("Notes for: "+ mFragmentResto.getName()+" in "+mFragmentResto.getCity());
+            mNotes = (EditText) rootView.findViewById(R.id.edit_note);
+            mNotes.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mFragmentResto.setNotes(s.toString());
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+            mCancelButton = (Button) rootView.findViewById(R.id.cancel_note_button);
+            mCancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setResult(RESULT_CANCELED);
+                    finish();
+                }
+            });
+            mSaveButton = (Button) rootView.findViewById(R.id.save_note_button);
+            mSaveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sendResult();
+                    finish();
+                }
+            });
+
             return rootView;
+        }
+        private void sendResult(){
+            Intent i = new Intent();
+            i.putExtra(Resto.RESTO,mFragmentResto);
+
         }
     }
 }
