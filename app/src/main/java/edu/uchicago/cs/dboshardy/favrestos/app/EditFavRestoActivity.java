@@ -181,21 +181,19 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 }
             });
             mFavoriteCheckBox.setChecked(resto.isFavorite());
-            mFavoriteCheckBox.isClickable();
+            mFavoriteCheckBox.setClickable(true);
             mFavoriteCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(mFavoriteCheckBox.isChecked()){
+                    if (mFavoriteCheckBox.isChecked()) {
                         resto.setFavorite(0);
-                    }
-                    else {
+                    } else {
                         resto.setFavorite(1);
                     }
                     mFavoriteCheckBox.setChecked(resto.isFavorite());
-                    if(resto.isFavorite()){
+                    if (resto.isFavorite()) {
                         mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
-                    }
-                    else {
+                    } else {
                         mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
                     }
                 }
@@ -295,14 +293,19 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mUpdateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent data = new Intent();
-                    data.putExtra(Resto.RESTO,mResto);
-                    if (getParent() == null) {
-                        setResult(RESULT_OK, data);
-                    } else {
-                        getParent().setResult(RESULT_OK, data);
+                    if(!(mResto.getAddress().isEmpty() || mResto.getPhoneNumber().isEmpty() || String.valueOf(mResto.getYelpURL()).isEmpty())) {
+                        Intent data = new Intent();
+                        data.putExtra(Resto.RESTO, mResto);
+                        if (getParent() == null) {
+                            setResult(RESULT_OK, data);
+                        } else {
+                            getParent().setResult(RESULT_OK, data);
+                        }
+                        finish();
                     }
-                    finish();
+                    else {
+                        Toast.makeText(EditFavRestoActivity.this,"Please fetch the data from yelp or fill it in yourself.", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
             mFetchButton = (Button) rootView.findViewById(R.id.fetch_button);

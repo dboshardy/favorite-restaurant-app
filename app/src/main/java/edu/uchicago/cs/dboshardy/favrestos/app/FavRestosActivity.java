@@ -191,8 +191,7 @@ public class FavRestosActivity extends ActionBarActivity {
                 mDbAdapter.createFavResto(resto);
                 Log.w("myApp","Inserted : "+resto.toString());
             }
-            mDbAdapter.fetchAllFavRestos();
-            mCursorAdapter.notifyDataSetChanged();
+            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
         }
     }
 

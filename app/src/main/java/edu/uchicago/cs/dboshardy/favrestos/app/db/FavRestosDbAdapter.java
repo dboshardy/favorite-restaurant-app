@@ -165,7 +165,7 @@ public class FavRestosDbAdapter {
     public Cursor fetchAllFavRestos() {
 
         Cursor mCursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
-                        KEY_NAME, KEY_FAVORITE},
+                        KEY_NAME, KEY_FAVORITE,KEY_ADDRESS,KEY_YELP_URL,KEY_IMAGE_URL,KEY_PHONE_NUMBER,KEY_RATING,KEY_NOTES,KEY_CITY},
                 null, null, null, null, null
         );
 
@@ -185,7 +185,6 @@ public class FavRestosDbAdapter {
         values.put(KEY_YELP_URL, String.valueOf(resto.getYelpURL()));
         values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
-        values.put(KEY_IMAGE_URL, resto.getImage());
         values.put(KEY_RATING, resto.getRating());
         values.put(KEY_NOTES, resto.getNotes());
         values.put(KEY_CITY, resto.getCity());
@@ -203,7 +202,7 @@ public class FavRestosDbAdapter {
         String query = "Select * from " + TABLE_NAME + " where " + KEY_NAME + "="
                 +"\""+ name +"\""+ " AND " + KEY_ADDRESS + "=" +"\""+address+"\"";
         Cursor cursor = mDb.rawQuery(query, null);
-        if (cursor.getCount() < 0) {
+        if (cursor.getCount() <= 0) {
             cursor.close();
             return false;
         }
