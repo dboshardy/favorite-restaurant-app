@@ -43,11 +43,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: edu.uchicago.cs.dboshardy.favrestos.app" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89e6dd72-c774-47b7-8b47-59e0f8fdd5d0" name="Default" comment="">
+    <list default="true" id="89e6dd72-c774-47b7-8b47-59e0f8fdd5d0" name="Default" comment="&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/cam_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/favrestos_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/favrestos_row.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" afterPath="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FavRestos.iws" />
@@ -74,68 +76,39 @@
       <file leaf-file-name="EditFavRestoActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1341" max-vertical-offset="5936">
-              <caret line="147" column="24" selection-start-line="147" selection-start-column="24" selection-end-line="147" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2958" max-vertical-offset="6188">
+              <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1323#1330#0" expanded="true" />
+                <element signature="e#10829#11711#0" expanded="true" />
+                <element signature="e#11696#11697#0" expanded="true" />
+                <element signature="e#11836#12369#0" expanded="true" />
+                <element signature="e#12354#12355#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FavRestosActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FavRestosActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="3836">
-              <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.28923076" vertical-offset="1642" max-vertical-offset="4018">
+              <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fav_restos_menu.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="280">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
               <folding>
-                <element signature="e#2420#5694#0" expanded="true" />
-                <element signature="e#5683#5684#0" expanded="true" />
+                <element signature="e#315#337#0" expanded="true" />
+                <element signature="e#536#550#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Activity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/app/Activity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="70489" max-vertical-offset="73752">
-              <caret line="5234" column="0" selection-start-line="5234" selection-start-column="0" selection-end-line="5234" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Instrumentation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/app/Instrumentation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="14179" max-vertical-offset="23898">
-              <caret line="1097" column="0" selection-start-line="1097" selection-start-column="0" selection-end-line="1097" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActivityThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/app/ActivityThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="27729" max-vertical-offset="67956">
-              <caret line="2153" column="0" selection-start-line="2153" selection-start-column="0" selection-end-line="2153" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="favrestos_row.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/favrestos_row.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4615383" vertical-offset="126" max-vertical-offset="826">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -143,8 +116,8 @@
       <file leaf-file-name="FavRestosDbAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="3864">
-              <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2412" max-vertical-offset="3850">
+              <caret line="187" column="23" selection-start-line="187" selection-start-column="23" selection-end-line="187" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -155,18 +128,8 @@
       <file leaf-file-name="Resto.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1792">
-              <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FavRestosSimpleCursorAdapter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6418338" vertical-offset="420" max-vertical-offset="1008">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1509" max-vertical-offset="1890">
+              <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -889,15 +852,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoListDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/favrestos_row.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/cam_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java" />
       </list>
     </option>
   </component>
@@ -1492,7 +1457,15 @@
       <created>1401938310049</created>
       <updated>1401938310049</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding to the db and persisting.  Still won't show in the&#10;listview.  Working on that.">
+      <created>1401939538742</created>
+      <updated>1401939538742</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Works except that it cant' detect previous entries yet.">
+      <created>1401940766228</created>
+      <updated>1401940766228</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1526,14 +1499,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4800638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37123746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3110368" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32744783" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3896321" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3896321" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1605,29 +1578,24 @@
     <MESSAGE value="Resto now updates edit screen." />
     <MESSAGE value="Still working out DB issues." />
     <MESSAGE value="DB working.  Troubleshooting. Still need to write notes&#10;activity and implement implicit intents." />
-    <option name="LAST_COMMIT_MESSAGE" value="DB working.  Troubleshooting. Still need to write notes&#10;activity and implement implicit intents." />
+    <MESSAGE value="Adding to the db and persisting.  Still won't show in the&#10;listview.  Working on that." />
+    <MESSAGE value="Works except that it cant' detect previous entries yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Works except that it cant' detect previous entries yet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java</url>
-          <line>45</line>
+          <line>46</line>
           <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="28" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="602">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_favrestos_layout.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1665,22 +1633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="557">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2572899" vertical-offset="0" max-vertical-offset="583">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/edit_fav_resto.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12864494" vertical-offset="0" max-vertical-offset="583">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1840,29 +1792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1526" max-vertical-offset="3906">
-          <caret line="109" column="38" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/database/Cursor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33136094" vertical-offset="462" max-vertical-offset="6398">
           <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1232">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1977,30 +1910,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1341" max-vertical-offset="5936">
-          <caret line="147" column="24" selection-start-line="147" selection-start-column="24" selection-end-line="147" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1323#1330#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1792">
-          <caret line="20" column="29" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="70489" max-vertical-offset="73752">
           <caret line="5234" column="0" selection-start-line="5234" selection-start-column="0" selection-end-line="5234" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#228949#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#35398#35551#0" expanded="false" />
+            <element signature="e#35544#35545#0" expanded="false" />
+            <element signature="e#36044#36059#0" expanded="false" />
+            <element signature="e#36819#36820#0" expanded="false" />
+            <element signature="e#36849#36850#0" expanded="false" />
+            <element signature="e#37245#37246#0" expanded="false" />
+            <element signature="e#37280#37281#0" expanded="false" />
+            <element signature="e#37388#37389#0" expanded="false" />
+            <element signature="e#37423#37424#0" expanded="false" />
+            <element signature="e#37526#37527#0" expanded="false" />
+            <element signature="e#37564#37565#0" expanded="false" />
+            <element signature="e#37682#37683#0" expanded="false" />
+            <element signature="e#37712#37713#0" expanded="false" />
+            <element signature="e#37826#37827#0" expanded="false" />
+            <element signature="e#37863#37864#0" expanded="false" />
+            <element signature="e#38212#38213#0" expanded="false" />
+            <element signature="e#38242#38243#0" expanded="false" />
+            <element signature="e#39497#39498#0" expanded="false" />
+            <element signature="e#39570#39571#0" expanded="false" />
+            <element signature="e#45262#45263#0" expanded="false" />
+            <element signature="e#45314#45315#0" expanded="false" />
+            <element signature="e#48307#48308#0" expanded="false" />
+            <element signature="e#48337#48338#0" expanded="false" />
+            <element signature="e#59940#59941#0" expanded="false" />
+            <element signature="e#59968#59969#0" expanded="false" />
+            <element signature="e#60737#60738#0" expanded="false" />
+            <element signature="e#60764#60765#0" expanded="false" />
+            <element signature="e#68462#68463#0" expanded="false" />
+            <element signature="e#68503#68504#0" expanded="false" />
+            <element signature="e#72785#72786#0" expanded="false" />
+            <element signature="e#72812#72813#0" expanded="false" />
+            <element signature="e#74492#74493#0" expanded="false" />
+            <element signature="e#74519#74520#0" expanded="false" />
+            <element signature="e#76490#76491#0" expanded="false" />
+            <element signature="e#76523#76524#0" expanded="false" />
+            <element signature="e#83942#83943#0" expanded="false" />
+            <element signature="e#83993#83994#0" expanded="false" />
+            <element signature="e#87552#87553#0" expanded="false" />
+            <element signature="e#87606#87607#0" expanded="false" />
+            <element signature="e#95087#95088#0" expanded="false" />
+            <element signature="e#95115#95116#0" expanded="false" />
+            <element signature="e#96495#96496#0" expanded="false" />
+            <element signature="e#96523#96524#0" expanded="false" />
+            <element signature="e#97436#97437#0" expanded="false" />
+            <element signature="e#97464#97465#0" expanded="false" />
+            <element signature="e#98930#98931#0" expanded="false" />
+            <element signature="e#98958#98959#0" expanded="false" />
+            <element signature="e#100188#100189#0" expanded="false" />
+            <element signature="e#100216#100217#0" expanded="false" />
+            <element signature="e#108776#108777#0" expanded="false" />
+            <element signature="e#108803#108804#0" expanded="false" />
+            <element signature="e#120627#120628#0" expanded="false" />
+            <element signature="e#120664#120665#0" expanded="false" />
+            <element signature="e#123146#123147#0" expanded="false" />
+            <element signature="e#123215#123216#0" expanded="false" />
+            <element signature="e#123393#123394#0" expanded="false" />
+            <element signature="e#123457#123458#0" expanded="false" />
+            <element signature="e#124683#124684#0" expanded="false" />
+            <element signature="e#124740#124741#0" expanded="false" />
+            <element signature="e#125081#125082#0" expanded="false" />
+            <element signature="e#125138#125139#0" expanded="false" />
+            <element signature="e#125445#125446#0" expanded="false" />
+            <element signature="e#125483#125484#0" expanded="false" />
+            <element signature="e#125623#125624#0" expanded="false" />
+            <element signature="e#125686#125687#0" expanded="false" />
+            <element signature="e#127289#127290#0" expanded="false" />
+            <element signature="e#127316#127317#0" expanded="false" />
+            <element signature="e#129004#129005#0" expanded="false" />
+            <element signature="e#129045#129046#0" expanded="false" />
+            <element signature="e#129239#129240#0" expanded="false" />
+            <element signature="e#129284#129285#0" expanded="false" />
+            <element signature="e#130996#130997#0" expanded="false" />
+            <element signature="e#131032#131033#0" expanded="false" />
+            <element signature="e#140157#140158#0" expanded="false" />
+            <element signature="e#140203#140204#0" expanded="false" />
+            <element signature="e#141934#141935#0" expanded="false" />
+            <element signature="e#141988#141989#0" expanded="false" />
+            <element signature="e#153595#153596#0" expanded="false" />
+            <element signature="e#153638#153639#0" expanded="false" />
+            <element signature="e#155441#155442#0" expanded="false" />
+            <element signature="e#155487#155488#0" expanded="false" />
+            <element signature="e#166341#166342#0" expanded="false" />
+            <element signature="e#166413#166414#0" expanded="false" />
+            <element signature="e#168350#168351#0" expanded="false" />
+            <element signature="e#168428#168429#0" expanded="false" />
+            <element signature="e#177739#177740#0" expanded="false" />
+            <element signature="e#177771#177772#0" expanded="false" />
+            <element signature="e#177950#177951#0" expanded="false" />
+            <element signature="e#177983#177984#0" expanded="false" />
+            <element signature="e#178548#178549#0" expanded="false" />
+            <element signature="e#178594#178595#0" expanded="false" />
+            <element signature="e#182021#182022#0" expanded="false" />
+            <element signature="e#182045#182046#0" expanded="false" />
+            <element signature="e#191039#191040#0" expanded="false" />
+            <element signature="e#191072#191073#0" expanded="false" />
+            <element signature="e#193304#193305#0" expanded="false" />
+            <element signature="e#193346#193347#0" expanded="false" />
+            <element signature="e#193520#193521#0" expanded="false" />
+            <element signature="e#193549#193550#0" expanded="false" />
+            <element signature="e#193589#193590#0" expanded="false" />
+            <element signature="e#193623#193624#0" expanded="false" />
+            <element signature="e#198548#198549#0" expanded="false" />
+            <element signature="e#198607#198608#0" expanded="false" />
+            <element signature="e#199740#199741#0" expanded="false" />
+            <element signature="e#199767#199768#0" expanded="false" />
+            <element signature="e#218614#218615#0" expanded="false" />
+            <element signature="e#218646#218647#0" expanded="false" />
+            <element signature="e#227110#227111#0" expanded="false" />
+            <element signature="e#227141#227142#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2020,17 +2046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="3836">
-          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-          <folding>
-            <element signature="e#2420#5694#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/favrestos_row.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2042,20 +2057,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1008">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/RestoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1232">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_fav_resto.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-115.23077" vertical-offset="84" max-vertical-offset="3948">
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/Resto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1509" max-vertical-offset="1890">
+          <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/EditFavRestoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2958" max-vertical-offset="6188">
+          <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1323#1330#0" expanded="true" />
+            <element signature="e#10829#11711#0" expanded="true" />
+            <element signature="e#11696#11697#0" expanded="true" />
+            <element signature="e#11836#12369#0" expanded="true" />
+            <element signature="e#12354#12355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosDbAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="882" max-vertical-offset="3864">
-          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2412" max-vertical-offset="3850">
+          <caret line="187" column="23" selection-start-line="187" selection-start-column="23" selection-end-line="187" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/db/FavRestosSimpleCursorAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/fav_restos_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6418338" vertical-offset="420" max-vertical-offset="1008">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="280">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#315#337#0" expanded="true" />
+            <element signature="e#536#550#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/edit_fav_resto.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="154">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/cam_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20710059" vertical-offset="0" max-vertical-offset="338">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/uchicago/cs/dboshardy/favrestos/app/FavRestosActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28923076" vertical-offset="1642" max-vertical-offset="4018">
+          <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
           <folding />
         </state>
       </provider>

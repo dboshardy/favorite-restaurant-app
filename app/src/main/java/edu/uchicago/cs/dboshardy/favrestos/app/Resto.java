@@ -9,7 +9,7 @@ import java.net.URL;
 public class Resto implements Serializable {
     public static final String RESTO_LIST = "edu.uchicago.cs.dboshardy.favrestos.app.resto_list";
     public static final String RESTO = "edu.uchicago.cs.dboshardy.favrestos.app.resto_to_deal_with";
-    private int mID;
+    private int mID=0;
     private String mName;
     private URL mYelpURL;
     private String mAddress;
@@ -163,5 +163,12 @@ public class Resto implements Serializable {
     public String toString() {
         return mName + " | " + mAddress + " | " + getRatingAsASCII();
     }
-}
 
+    public boolean hasID() {
+        boolean result = false;
+        if(mID!=0){
+            result = true;
+        }
+        return result;
+    }
+}

@@ -20,5 +20,6 @@
     <string name="yelp_page">YELP PAGE:</string>
     <string name="address">ADDRESS:</string>
     <string name="update">Update</string>
+    <string name="exit">Exit</string>
 
 </resources>

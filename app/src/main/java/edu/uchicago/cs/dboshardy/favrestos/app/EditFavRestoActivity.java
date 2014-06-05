@@ -46,6 +46,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mResto = (Resto) getIntent().getSerializableExtra(Resto.RESTO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_fav_resto);
         getActionBar().setTitle(getString(R.string.restaurant_details_title));
@@ -98,6 +99,8 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public EditFavRestoFragment() {
         }
         private void drawRestoViews(final Resto resto) {
+            mSearchResto.setText(resto.getName());
+            mSearchCity.setText(resto.getCity());
             mEditPhone.setText(resto.getPhoneNumber());
             mEditAddress.setText(resto.getAddress());
             mEditYelpURL.setText(String.valueOf(resto.getYelpURL()));
@@ -241,6 +244,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            //TODO: add parsing to check if you're passing in a resto or not
             View rootView = inflater.inflate(R.layout.fragment_edit_fav_resto, container, false);
             mSearchCity = (EditText) rootView.findViewById(R.id.search_city);
             mSearchCity.addTextChangedListener(new TextWatcher() {
@@ -331,6 +335,11 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextYelpURL = (TextView) rootView.findViewById(R.id.text_yelp_url);
             mFavoriteCheckBox = (CheckBox) rootView.findViewById(R.id.favorite_checked);
             mFavoriteColorView = rootView.findViewById(R.id.favorite_color_view);
+            if(mResto != null){
+                String[] params = {String.valueOf(mResto.getImageUrl())};
+                ImageFetchTask fetcher = new ImageFetchTask();
+                fetcher.execute(params);
+            }
             return rootView;
         }
 

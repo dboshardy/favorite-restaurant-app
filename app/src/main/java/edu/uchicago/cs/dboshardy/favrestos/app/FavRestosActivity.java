@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
@@ -152,6 +153,8 @@ public class FavRestosActivity extends ActionBarActivity {
 
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    MenuInflater inflater = mode.getMenuInflater();
+                    inflater.inflate(R.menu.cam_menu, menu);
                     return true;
                 }
 
@@ -163,12 +166,26 @@ public class FavRestosActivity extends ActionBarActivity {
                 @Override
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
 
+                    switch (item.getItemId()) {
+                        case R.id.menu_item_delete_resto:
+                            for (int nC = mCursorAdapter.getCount() - 1; nC >= 0; nC--) {
+                                if (mListView.isItemChecked(nC)) {
+
+                                    mDbAdapter.deleteFavRestoById(getIdFromPosition(nC));
+
+                                }
+                            }
+                            mode.finish();
+                            mCursorAdapter.changeCursor(mDbAdapter.fetchAllFavRestos());
+                            return true;
+
+                    }
+
                     return false;
                 }
 
                 @Override
                 public void onDestroyActionMode(ActionMode mode) {
-                    //TODO: Write contextual action
 
                 }
             });
@@ -235,7 +252,7 @@ public class FavRestosActivity extends ActionBarActivity {
     }
     private void fireEditRestoDialog(final Resto resto){
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
-        i.putExtra(Resto.RESTO_LIST,resto);
+        i.putExtra(Resto.RESTO,resto);
         startActivityForResult(i, 1);
 
         // custom dialog final Dialog dialog = new Dialog(this);
