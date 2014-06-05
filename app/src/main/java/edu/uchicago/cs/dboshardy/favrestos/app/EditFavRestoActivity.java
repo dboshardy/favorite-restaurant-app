@@ -185,6 +185,11 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     startActivity(browserIntent);
                 }
             });
+            if (resto.isFavorite()) {
+                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
+            } else {
+                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
+            }
             mFavoriteCheckBox.setChecked(resto.isFavorite());
             mFavoriteCheckBox.setClickable(true);
             mFavoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
