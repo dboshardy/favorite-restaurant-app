@@ -98,9 +98,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public EditFavRestoFragment() {
         }
         private void drawRestoViews(final Resto resto) {
-            if(mImage != null){
-                mImageView.setImageDrawable(mImage);
-            }
             mEditPhone.setText(resto.getPhoneNumber());
             mEditAddress.setText(resto.getAddress());
             mEditYelpURL.setText(String.valueOf(resto.getYelpURL()));
@@ -125,7 +122,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextYelpURL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: browser intent
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(resto.getYelpURL())));
                     startActivity(browserIntent);
                 }
@@ -156,6 +152,9 @@ public class EditFavRestoActivity extends ActionBarActivity {
             else {
                 mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
             }
+            if(mImage != null){
+                mImageView.setImageDrawable(mImage);
+            }
         }
 
         @Override
@@ -168,7 +167,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);
-                drawRestoViews(mResto);
             }
         }
 
@@ -392,6 +390,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
             protected void onPostExecute(Drawable drawable) {
                 super.onPostExecute(drawable);
                 mImage = drawable;
+                drawRestoViews(mResto);
             }
         }
     }

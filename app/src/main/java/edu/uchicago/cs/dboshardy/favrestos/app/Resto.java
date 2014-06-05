@@ -18,7 +18,7 @@ public class Resto implements Serializable {
     private String mPhoneNumber;
     private double mRating;
     private int mFavorite;
-    private String mNotes;
+    private String mNotes = "";
     private String mCity;
 
     public String getCity() {

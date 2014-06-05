@@ -59,14 +59,14 @@ public class FavRestosDbAdapter {
             "CREATE TABLE if not exists " + TABLE_NAME + " ( " +
                     KEY_ID + " INTEGER PRIMARY KEY autoincrement, " +
                     KEY_NAME + " TEXT, " +
-                    KEY_FAVORITE + " INTEGER," +
+                    KEY_FAVORITE + " INTEGER, " +
                     KEY_YELP_URL + " TEXT, " +
                     KEY_ADDRESS + " TEXT, " +
                     KEY_IMAGE_URL + " TEXT, " +
-                    KEY_PHONE_NUMBER + " TEXT" +
-                    KEY_IMAGE_URL + " TEXT, " +
-                    KEY_RATING + "DOUBLE" +
-                    KEY_CITY + " TEXT);";
+                    KEY_PHONE_NUMBER + " TEXT, " +
+                    KEY_RATING + " DOUBLE, " +
+                    KEY_NOTES + " TEXT, " +
+                    KEY_CITY + " TEXT );";
 
 
     public FavRestosDbAdapter(Context ctx) {
@@ -116,6 +116,7 @@ public class FavRestosDbAdapter {
         values.put(KEY_IMAGE_URL, String.valueOf(resto.getImageUrl()));
         values.put(KEY_PHONE_NUMBER, resto.getPhoneNumber());
         values.put(KEY_RATING, resto.getRating());
+        values.put(KEY_NOTES,resto.getNotes());
 
         // Inserting Row
         return mDb.insert(TABLE_NAME, null, values);
@@ -128,13 +129,13 @@ public class FavRestosDbAdapter {
 
         Cursor cursor = mDb.query(TABLE_NAME, new String[]{KEY_ID,
                         KEY_NAME, KEY_FAVORITE, KEY_YELP_URL, KEY_ADDRESS, KEY_IMAGE_URL,
-                        KEY_PHONE_NUMBER, KEY_RATING, KEY_CITY}, KEY_ID + "=?",
+                        KEY_PHONE_NUMBER, KEY_RATING, KEY_CITY,KEY_NOTES}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null
         );
         if (cursor != null)
             cursor.moveToFirst();
 
-        return new Resto(
+        Resto resto =  new Resto(
                 //id
                 cursor.getInt(KEY_ID_INDEX),
                 //name
@@ -155,8 +156,8 @@ public class FavRestosDbAdapter {
                 cursor.getString(KEY_NOTES_INDEX),
                 //city
                 cursor.getString(KEY_CITY_INDEX)
-
         );
+        return resto;
 
 
     }
@@ -200,12 +201,15 @@ public class FavRestosDbAdapter {
         String address = resto.getAddress();
 
         String query = "Select * from " + TABLE_NAME + " where " + KEY_NAME + "="
-                + name + " AND " + KEY_ADDRESS + "=" + address;
+                +"\""+ name +"\""+ " AND " + KEY_ADDRESS + "=" +"\""+address+"\"";
         Cursor cursor = mDb.rawQuery(query, null);
-        if (cursor.getCount() <= 0) {
+        if (cursor.getCount() < 0) {
+            cursor.close();
             return false;
         }
         else {
+            cursor.moveToFirst();
+            cursor.close();
             return true;
         }
     }
@@ -226,7 +230,6 @@ public class FavRestosDbAdapter {
 
 //    public void insertSomeFavRestos() {
 
-//        createFavResto("Buy Learn Android Studio by Gerber", true);
 //        createFavResto("Send Dad birthday gift", false);
 //        createFavResto("Anniversary on Friday - dinner", false);
 //        createFavResto("String squash racket", false);

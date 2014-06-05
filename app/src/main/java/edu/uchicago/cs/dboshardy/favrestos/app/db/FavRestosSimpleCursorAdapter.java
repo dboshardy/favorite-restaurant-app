@@ -35,7 +35,9 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
             holder.colYelpURL = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_YELP_URL);
             holder.colAddress = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_ADDRESS);
             holder.colPhoneNumber = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_PHONE_NUMBER);
+            holder.colRating = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_RATING);
             holder.colCity = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_CITY);
+            holder.colNotes = cursor.getColumnIndexOrThrow(FavRestosDbAdapter.KEY_NOTES);
 
 
             holder.listTab = view.findViewById(R.id.row_tab);
@@ -62,6 +64,9 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
         int colAddress;
         int colPhoneNumber;
         int colCity;
+        int colRating;
+        int colNotes;
+
 
         View listTab;
         TextView listText;

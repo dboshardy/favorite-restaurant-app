@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -121,12 +122,14 @@ public class FavRestosActivity extends ActionBarActivity {
 
                         } else if (position == 1) {
                             //implicit nav intent
-                            //TODO: Write these
+                            //TODO: Write this
 
                         } else if (position == 2) {
                             //implicit map intent
+                            //TODO: Write this
                         } else if (position == 3) {
                             //implicit call intent
+                            //TODO: Write this
                         } else if (position == 4) {
                             //implicit browser intent
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(resto.getYelpURL())));
@@ -186,13 +189,17 @@ public class FavRestosActivity extends ActionBarActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
             Resto resto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
+            mDbAdapter.open();
             if(mDbAdapter.dbContainsResto(resto)){
-                mDbAdapter.createFavResto(resto);
+                mDbAdapter.updateFavResto((resto));
+                Log.w("myApp","Updated : "+resto.toString());
             }
             else {
-
-                mDbAdapter.updateFavResto((resto));
+                mDbAdapter.createFavResto(resto);
+                Log.w("myApp","Inserted : "+resto.toString());
             }
+            mDbAdapter.fetchAllFavRestos();
+            mCursorAdapter.notifyDataSetChanged();
         }
     }
 
