@@ -42,6 +42,7 @@ import java.util.ArrayList;
 public class EditFavRestoActivity extends ActionBarActivity {
     private Resto mResto;
     private ArrayList<Resto> mRestos = new ArrayList<Resto>();
+    private boolean hasSearchedFlag = false;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -99,6 +100,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
         public EditFavRestoFragment() {
         }
         private void drawRestoViews(final Resto resto) {
+            hasSearchedFlag = true;
             mSearchResto.setText(resto.getName());
             mSearchCity.setText(resto.getCity());
             mEditPhone.setText(resto.getPhoneNumber());
@@ -146,7 +148,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     try {
-                        mResto.setYelpURL(new URL(s.toString()));
+                        resto.setYelpURL(new URL(s.toString()));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
@@ -185,28 +187,23 @@ public class EditFavRestoActivity extends ActionBarActivity {
             });
             mFavoriteCheckBox.setChecked(resto.isFavorite());
             mFavoriteCheckBox.setClickable(true);
-            mFavoriteCheckBox.setOnClickListener(new View.OnClickListener() {
+            mFavoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onClick(View view) {
-                    if (mFavoriteCheckBox.isChecked()) {
-                        resto.setFavorite(0);
-                    } else {
-                        resto.setFavorite(1);
-                    }
-                    mFavoriteCheckBox.setChecked(resto.isFavorite());
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                   if(isChecked) {
+                       resto.setFavorite(1);
+                   }
+                    else {
+                       resto.setFavorite(0);
+                   }
                     if (resto.isFavorite()) {
                         mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
                     } else {
                         mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
                     }
+
                 }
             });
-            if(resto.isFavorite()){
-                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
-            }
-            else {
-                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
-            }
             if(mImage != null){
                 mImageView.setImageDrawable(mImage);
             }
@@ -223,22 +220,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
                 ImageFetchTask fetcher = new ImageFetchTask();
                 fetcher.execute(params);
             }
-        }
-
-        public String getName() {
-            return mName;
-        }
-
-        public void setName(String name) {
-            mName = name;
-        }
-
-        public String getCity() {
-            return mCity;
-        }
-
-        public void setCity(String city) {
-            mCity = city;
         }
 
         @Override
@@ -297,7 +278,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mUpdateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(!(mResto.getAddress().isEmpty() || mResto.getPhoneNumber().isEmpty() || String.valueOf(mResto.getYelpURL()).isEmpty())) {
+                    if(hasSearchedFlag) {
                         Intent data = new Intent();
                         data.putExtra(Resto.RESTO, mResto);
                         if (getParent() == null) {
@@ -305,11 +286,11 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         } else {
                             getParent().setResult(RESULT_OK, data);
                         }
-                        finish();
                     }
                     else {
-                        Toast.makeText(EditFavRestoActivity.this,"Please fetch the data from yelp or fill it in yourself.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditFavRestoActivity.this,"Please search for the data using yelp",Toast.LENGTH_LONG).show();
                     }
+                        finish();
                 }
             });
             mFetchButton = (Button) rootView.findViewById(R.id.fetch_button);

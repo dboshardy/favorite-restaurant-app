@@ -50,6 +50,7 @@ public class Resto implements Serializable {
         mPhoneNumber = phoneNumber;
         mRating = rating;
         mCity = city;
+        setNotes("");
         setFavorite(0);
     }
 
