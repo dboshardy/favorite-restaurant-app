@@ -166,16 +166,16 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextPhone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: call intent
-
-
+                    Intent i = new Intent(Intent.ACTION_DIAL);
+                    i.setData(Uri.parse("tel:"+resto.getPhoneNumber()));
+                    startActivity(i);
                 }
             });
             mEditNoteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(EditFavRestoActivity.this, NotesActivity.class);
-                    i.putExtra(Resto.RESTO, mResto);
+                    i.putExtra(Resto.RESTO, resto);
                     startActivityForResult(i, 1);
                 }
             });
@@ -183,8 +183,9 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: map intent
-
+                    String uri = "geo:0,0?q="+resto.getAddress().replace(" ","+");
+                    Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(i);
                 }
             });
             mTextYelpURL.setTextColor(getApplicationContext().getResources().getColor(R.color.blue));
@@ -195,11 +196,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
                     startActivity(browserIntent);
                 }
             });
-            if (resto.isFavorite()) {
-                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
-            } else {
-                mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
-            }
             mFavoriteCheckBox.setChecked(resto.isFavorite());
             mFavoriteCheckBox.setClickable(true);
             mFavoriteCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -209,11 +205,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         resto.setFavorite(1);
                     } else {
                         resto.setFavorite(0);
-                    }
-                    if (resto.isFavorite()) {
-                        mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.orange));
-                    } else {
-                        mFavoriteColorView.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.green));
                     }
 
                 }
@@ -331,7 +322,6 @@ public class EditFavRestoActivity extends ActionBarActivity {
             mTextAddress = (TextView) rootView.findViewById(R.id.text_address);
             mTextYelpURL = (TextView) rootView.findViewById(R.id.text_yelp_url);
             mFavoriteCheckBox = (CheckBox) rootView.findViewById(R.id.favorite_checked);
-            mFavoriteColorView = rootView.findViewById(R.id.favorite_color_view);
             if (mResto != null) {
                 String[] params = {String.valueOf(mResto.getImageUrl())};
                 ImageFetchTask fetcher = new ImageFetchTask();

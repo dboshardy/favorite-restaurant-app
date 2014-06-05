@@ -5,7 +5,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="50dp"
-              android:background="@color/dark_grey"
+              android:background="@color/darker_grey"
 
 
     >

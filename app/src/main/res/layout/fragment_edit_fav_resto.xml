@@ -32,7 +32,6 @@
                 android:layout_weight="10"
                 android:orientation="horizontal">
 
-                <!--TODO: Maybe hard code the size of image for use with list view-->
                 <ImageView
                     android:id="@+id/image_view"
                     android:layout_marginTop="12dp"
@@ -236,12 +235,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
-                        <View
-                            android:id="@+id/favorite_color_view"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="fill_parent"
-                            android:background="@color/green" />
                         <Button
                             android:text="@string/edit_notes"
                             android:id="@+id/edit_notes_button"
@@ -278,6 +271,5 @@
     </LinearLayout>
 
 
-    <!--TODO: Add layout-->
 
 </RelativeLayout>

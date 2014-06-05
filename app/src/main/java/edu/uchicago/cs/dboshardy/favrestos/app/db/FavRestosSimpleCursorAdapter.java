@@ -48,9 +48,9 @@ public class FavRestosSimpleCursorAdapter extends SimpleCursorAdapter {
 
         holder.listText.setText(cursor.getString(holder.colName));
         if (cursor.getInt(holder.colFavorite) > 0)
-            holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.blue));
         else
-            holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.green));
+            holder.listTab.setBackgroundColor(context.getResources().getColor(R.color.darker_grey));
     }
 
     static class ViewHolder {

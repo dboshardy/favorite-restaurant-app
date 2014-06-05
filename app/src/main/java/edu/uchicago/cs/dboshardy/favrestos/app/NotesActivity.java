@@ -1,5 +1,6 @@
 package edu.uchicago.cs.dboshardy.favrestos.app;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -23,10 +24,12 @@ import org.w3c.dom.Text;
 public class NotesActivity extends ActionBarActivity {
     Resto mResto;
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        getActionBar().setTitle(getString(R.string.edit_notes_title));
         mResto = (Resto) getIntent().getSerializableExtra(Resto.RESTO);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -122,7 +125,11 @@ public class NotesActivity extends ActionBarActivity {
         private void sendResult() {
             Intent i = new Intent();
             i.putExtra(Resto.RESTO, mFragmentResto);
-
+            if (getParent() == null) {
+                setResult(RESULT_OK, i);
+            } else {
+                getParent().setResult(RESULT_OK, i);
+            }
         }
     }
 }

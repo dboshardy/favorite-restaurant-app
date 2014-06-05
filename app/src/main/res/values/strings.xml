@@ -25,6 +25,7 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="enter_note">Enter note here...</string>
-    <string name="edit_notes">Notes</string>
+    <string name="edit_notes">Edit Notes</string>
+    <string name="edit_notes_title">Edit Notes</string>
 
 </resources>

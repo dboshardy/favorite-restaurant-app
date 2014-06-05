@@ -116,14 +116,20 @@ public class FavRestosActivity extends ActionBarActivity {
 
                         } else if (position == 1) {
                             //implicit nav intent
-                            //TODO: Write this
+                            String uri = "google.navigation:q="+resto.getAddress().replace(" ","+")+resto.getCity();
+                            Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                            startActivity(i);
 
                         } else if (position == 2) {
                             //implicit map intent
-                            //TODO: Write this
+                            String uri = "geo:0,0?q="+resto.getAddress().replace(" ","+");
+                            Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                            startActivity(i);
                         } else if (position == 3) {
                             //implicit call intent
-                            //TODO: Write this
+                            Intent i = new Intent(Intent.ACTION_DIAL);
+                            i.setData(Uri.parse("tel:"+resto.getPhoneNumber()));
+                            startActivity(i);
                         } else if (position == 4) {
                             //implicit browser intent
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.valueOf(resto.getYelpURL())));

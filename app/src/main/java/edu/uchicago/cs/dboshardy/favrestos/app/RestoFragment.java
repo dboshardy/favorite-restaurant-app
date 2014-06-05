@@ -23,7 +23,6 @@ public class RestoFragment extends DialogFragment {
     private RestoListAdapter<Resto> myAdapter;
     private Resto mResto;
 
-    // TODO: Rename and change types of parameters
     public static RestoFragment newInstance(ArrayList<Resto> restos) {
         RestoFragment fragment = new RestoFragment();
         Bundle args = new Bundle();
