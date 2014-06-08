@@ -47,6 +47,7 @@ public class RestoFragment extends DialogFragment {
         myAdapter = new RestoListAdapter<Resto>(mRestos);
         mRestoList.setAdapter(myAdapter);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //Externalize string
         builder.setTitle("Pick a Restaurant").setView(v);
 
         return builder.create();

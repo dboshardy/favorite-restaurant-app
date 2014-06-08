@@ -38,26 +38,6 @@ public class NotesActivity extends ActionBarActivity {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.notes, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -80,8 +60,11 @@ public class NotesActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_notes, container, false);
             mHeaderText = (TextView) rootView.findViewById(R.id.notes_header);
+            //Externalize display text.
             mHeaderText.setText("Notes for: " + mFragmentResto.getName() + " in " + mFragmentResto.getCity());
             mNotes = (EditText) rootView.findViewById(R.id.edit_note);
+            //Do not null check first.
+            //Compare constant to variable to avoid NPE
             if (!mFragmentResto.getNotes().equals("") && mFragmentResto != null) {
                 mNotes.setText(mFragmentResto.getNotes());
 

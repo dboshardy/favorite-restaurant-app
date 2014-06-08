@@ -217,6 +217,7 @@ public class EditFavRestoActivity extends ActionBarActivity {
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
+            //Check for request code to make sure you are handling the correct callback.
             if (resultCode == 5) {
                 //take data from dialog
                 int index;
@@ -295,10 +296,13 @@ public class EditFavRestoActivity extends ActionBarActivity {
                         } else {
                             getParent().setResult(RESULT_OK, data);
                         }
+                        finish();
                     } else {
+                        //Move text to strings.xml
                         Toast.makeText(EditFavRestoActivity.this, "Please search for the data using yelp", Toast.LENGTH_LONG).show();
                     }
-                    finish();
+                    //should move this to if block so that it does not close this activity.
+                    //finish();
                 }
             });
             mFetchButton = (Button) rootView.findViewById(R.id.fetch_button);

@@ -110,6 +110,7 @@ public class FavRestosActivity extends ActionBarActivity {
                             e.printStackTrace();
                         }
                         //do something with it
+                        //use switch case that if-else for better readability
                         if (position == 0) {
                             //edit Resto
                             fireEditRestoDialog(resto);
@@ -203,6 +204,7 @@ public class FavRestosActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Check for request code to make sure you are handling the correct callback.
         if (resultCode == RESULT_OK) {
             Resto resto = (Resto) data.getExtras().getSerializable(Resto.RESTO);
             mDbAdapter.open();
@@ -257,9 +259,14 @@ public class FavRestosActivity extends ActionBarActivity {
     }
 
     private void fireEditRestoDialog(final Resto resto) {
+
+        //May be one option is to have different request code for new vs. edit.
+        //Then on the onActivityResult() you can check and take correct action of insert/update.
         Intent i = new Intent(FavRestosActivity.this, EditFavRestoActivity.class);
         i.putExtra(Resto.RESTO, resto);
         startActivityForResult(i, 1);
+
+
 
         // custom dialog final Dialog dialog = new Dialog(this);
 //        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
